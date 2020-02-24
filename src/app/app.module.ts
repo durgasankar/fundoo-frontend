@@ -9,18 +9,27 @@ import {
   MatButtonModule,
   MatInputModule,
   MatCardModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatIconModule,
+  MatSnackBarModule,
+  MatGridListModule
 } from "@angular/material";
 
 import { LoginComponent } from "./containers/user-authentication/login/login.component";
 import { RegistrationComponent } from "./containers/user-authentication/registration/registration.component";
 import { PageNotFoundComponent } from "./containers/page-not-found/page-not-found.component";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 const MaterialComponents = [
   MatButtonModule,
   MatInputModule,
   MatCardModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatIconModule,
+  MatSnackBarModule,
+  MatGridListModule
 ];
 @NgModule({
   declarations: [
@@ -33,8 +42,12 @@ const MaterialComponents = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
-    MaterialComponents
+    MaterialComponents,
+    NgxSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
