@@ -11,9 +11,10 @@ import {
   MatCardModule,
   MatFormFieldModule
 } from "@angular/material";
+
+import { LoginComponent } from "./containers/user-authentication/login/login.component";
+import { RegistrationComponent } from "./containers/user-authentication/registration/registration.component";
 import { PageNotFoundComponent } from "./containers/page-not-found/page-not-found.component";
-import { LoginComponent } from './containers/user-authentication/login/login.component';
-import { RegistrationComponent } from './containers/user-authentication/registration/registration.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -22,7 +23,12 @@ const MaterialComponents = [
   MatFormFieldModule
 ];
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, LoginComponent, RegistrationComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    LoginComponent,
+    RegistrationComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
