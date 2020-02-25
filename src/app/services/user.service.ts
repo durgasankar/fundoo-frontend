@@ -8,7 +8,8 @@ import { environment } from "src/environments/environment";
   providedIn: "root"
 })
 export class UserService {
-  private registrationUrl: string = `${environment.USER_API_URL} + ${environment.REGISTRATION_URL}`;
+  private registrationUrl: string = `${environment.USER_API_URL +
+    environment.REGISTRATION_URL}`;
 
   constructor(private _httpService: HttpService) {}
 

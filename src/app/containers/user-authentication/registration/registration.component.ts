@@ -30,13 +30,13 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
     this.registrationForm = this.formBuilder.group(
       {
-        firstName: [null, Validators.required],
+        firstName: [
+          null,
+          [Validators.required, Validators.pattern("^[a-zA-Z]{3,15}$")]
+        ],
         lastName: [
           null,
-          Validators.compose([
-            Validators.required,
-            Validators.pattern("^[a-zA-Z]{3,15}$")
-          ])
+          [Validators.required, Validators.pattern("^[a-zA-Z]{3,15}$")]
         ],
         emailId: [
           null,
@@ -56,7 +56,7 @@ export class RegistrationComponent implements OnInit {
           Validators.compose([
             Validators.required,
             Validators.minLength(4),
-            Validators.maxLength(32)
+            Validators.maxLength(10)
           ])
         ],
         confirmPassword: [
@@ -64,7 +64,7 @@ export class RegistrationComponent implements OnInit {
           Validators.compose([
             Validators.required,
             Validators.minLength(4),
-            Validators.maxLength(32)
+            Validators.maxLength(10)
           ])
         ]
       },
@@ -73,5 +73,19 @@ export class RegistrationComponent implements OnInit {
   }
   get userInfo() {
     return this.registrationForm.controls;
+  }
+  onSubmit(user) {
+    if (!this.registrationForm.valid) {
+      return;
+    }
+    console.log("User : " + user);
+    this.userservice.registration(user).subscribe(
+      response => {
+        this.router.navigateByUrl("/login");
+      },
+      error => {
+        console.log("error", "registration error");
+      }
+    );
   }
 }
