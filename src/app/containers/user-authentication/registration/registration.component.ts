@@ -15,12 +15,11 @@ import { MatchPassword } from "src/app/utility/password-match";
 export class RegistrationComponent implements OnInit {
   showSpinner: boolean = false;
   user: RegistartionUser = new RegistartionUser();
-  registerForm: FormGroup;
+  registrationForm: FormGroup;
   submitted: boolean = false;
   hide = true;
   hide2 = true;
   showMsg: boolean = false;
-
   constructor(
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
@@ -28,77 +27,51 @@ export class RegistrationComponent implements OnInit {
     private matSnackBar: MatSnackBar,
     private router: Router
   ) {}
-
-  onRegisterSubmit() {
-    this.showSpinner = true;
-    console.log("---------------------------------------");
-    this.userservice.registration(this.registerForm.value).subscribe(
-      user => {
-        this.router.navigate(["/login"]);
-        this.showMsg = true;
-        this.submitted = true;
-        this.matSnackBar.open(
-          "Registration Successfull Please Verify Account Before Login",
-          "ok",
-          { duration: 4000 }
-        );
-        this.showSpinner = false;
-      },
-      (error: any) => {
-        this.showSpinner = false;
-        this.matSnackBar.open("Bad Creaditial", "ok", { duration: 4000 });
-        console.log(error);
-      }
-    );
-    if (this.registerForm.invalid) {
-      return;
-    }
-  }
   ngOnInit() {
-    console.log("ngoninit---------------------------------------");
-    this.spinner.show();
-    this.registerForm = this.formBuilder.group(
+    this.registrationForm = this.formBuilder.group(
       {
-        firstname: ["", [Validators.required]],
-        lastname: [""],
-        emailId: [
-          "",
-          [
+        firstName: [null, Validators.required],
+        lastName: [
+          null,
+          Validators.compose([
             Validators.required,
-            Validators.pattern("^[a-z0-9.%-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-          ]
+            Validators.pattern("^[a-zA-Z]{3,15}$")
+          ])
+        ],
+        emailId: [
+          null,
+          Validators.compose([
+            Validators.compose([Validators.required, Validators.email])
+          ])
+        ],
+        mobileNumber: [
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.pattern("^[0-9]{10}$")
+          ])
         ],
         password: [
-          "",
-          [
+          null,
+          Validators.compose([
             Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(16)
-          ]
+            Validators.minLength(4),
+            Validators.maxLength(32)
+          ])
         ],
-        cnfpassword: [
-          "",
-          [
+        confirmPassword: [
+          null,
+          Validators.compose([
             Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(16)
-          ]
-        ],
-        phoneNumber: [
-          "",
-          [
-            Validators.required,
-            Validators.minLength(10),
-            Validators.maxLength(10)
-          ]
+            Validators.minLength(4),
+            Validators.maxLength(32)
+          ])
         ]
       },
-      {
-        validator: MatchPassword("password", "cnfpassword")
-      }
+      { validator: MatchPassword("password", "confirmPassword") }
     );
   }
-  get f() {
-    return this.registerForm.controls;
+  get userInfo() {
+    return this.registrationForm.controls;
   }
 }

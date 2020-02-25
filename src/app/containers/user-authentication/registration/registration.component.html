@@ -6,58 +6,153 @@
     <title>Register</title>
   </head>
   <body>
-    <div class="fundoo">
-      <span class="f">F</span>
-      <span class="u">U</span>
-      <span class="n">N</span>
-      <span class="d">D</span>
-      <span class="o">O</span>
-      <span class="oo">O</span>
-    </div>
-    <div class="registration-container">
-      <mat-card-title>
-        <div class="mat-title">Registration Form</div>
-      </mat-card-title>
-    </div>
-    <div style="width: 35%; margin: 0 30%;">
-      <div
-        class="form-content"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
+    <div class="main-div-box">
+      <div class="fundoo">
+        <span class="f">F</span>
+        <span class="u">U</span>
+        <span class="n">N</span>
+        <span class="d">D</span>
+        <span class="o">O</span>
+        <span class="oo">O</span>
+      </div>
+      <div class="registration-form-box">
+        <mat-card-title>
+          <div class="mat-title">Registration Form</div>
+        </mat-card-title>
+      </div>
+      <form
+        [formGroup]="registrationForm"
+        (ngSubmit)="register(registrationForm.value)"
       >
-        <div>
-          <mat-card-content>
-            <mat-form-field appearance="outline">
-              <mat-label>Firstname</mat-label>
-              <input matInput placeholder="Enter firstname" />
-            </mat-form-field>
-          </mat-card-content>
+        <div class="registration-container">
+          <div class="name" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="first-name">
+              <mat-card-content>
+                <mat-form-field appearance="outline">
+                  <mat-label>Firstname</mat-label>
+                  <input
+                    matInput
+                    placeholder="Enter Firstname"
+                    formControlName="firstName"
+                  />
+                  <mat-error>
+                    <mat-error *ngIf="userInfo.firstName.errors.required"
+                      >First name required</mat-error
+                    >
+                    <mat-error *ngIf="userInfo.firstName.errors.pattern"
+                      >please give alphabets</mat-error
+                    >
+                  </mat-error>
+                </mat-form-field>
+              </mat-card-content>
+            </div>
+            <div class="last-name">
+              <mat-card-content>
+                <mat-form-field appearance="outline">
+                  <mat-label>Lastname</mat-label>
+                  <input
+                    matInput
+                    placeholder="Enter Lastname"
+                    formControlName="lastName"
+                  />
+                  <mat-error>
+                    <mat-error>Last name required</mat-error>
+                  </mat-error>
+                </mat-form-field>
+              </mat-card-content>
+            </div>
+          </div>
+          <div class="email">
+            <mat-card-content>
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter Email"
+                  formControlName="emailId"
+                />
+                <mat-icon matSuffix>mail</mat-icon>
+                <mat-error>
+                  <mat-error>Mail id required</mat-error>
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          <div class="phone-number">
+            <mat-card-content>
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Phone number</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter Phone number"
+                  formControlName="mobileNumber"
+                />
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error>
+                  <mat-error>Phone number required</mat-error>
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          <div
+            class="password-and-cnfpassword"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <div>
+              <mat-card-content>
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    formControlName="password"
+                  />
+                </mat-form-field>
+              </mat-card-content>
+            </div>
+            &nbsp;
+            <div>
+              <mat-card-content>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm</mat-label>
+                  <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    formControlName="confirmPassword"
+                  />
+                </mat-form-field>
+              </mat-card-content>
+            </div>
+
+            <mat-icon matSuffix (click)="hide = !hide">
+              {{ hide ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </div>
+          <div
+            class="submit-login-link"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+          >
+            <div class="register-btn">
+              <mat-card-actions>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="submit"
+                  [disabled]="!registrationForm.valid"
+                >
+                  Register
+                </button>
+              </mat-card-actions>
+            </div>
+            <br />
+            <div style="padding-right: 7%;">
+              <a [routerLink]="['/login']">Sign in instead</a>
+            </div>
+          </div>
         </div>
-        <div>
-          <mat-card-content>
-            <mat-form-field appearance="outline">
-              <mat-label>Lastname</mat-label>
-              <input matInput placeholder="Enter lastname" />
-            </mat-form-field>
-          </mat-card-content>
-        </div>
-      </div>
-      <div>
-        <mat-card-content>
-          <mat-form-field appearance="outline" style="width: 100%;">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Enter Email" />
-          </mat-form-field>
-        </mat-card-content>
-      </div>
-      <div>
-        <mat-card-content>
-          <mat-form-field appearance="outline" style="width: 100%;">
-            <mat-label>Phone number</mat-label>
-            <input matInput placeholder="Enter Phone number" />
-          </mat-form-field>
-        </mat-card-content>
-      </div>
+      </form>
     </div>
   </body>
 </html>

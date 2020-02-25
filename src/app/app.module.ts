@@ -47,7 +47,8 @@ const MaterialComponents = [
     FlexLayoutModule,
     MaterialComponents,
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
