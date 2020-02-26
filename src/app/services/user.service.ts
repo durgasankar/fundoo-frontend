@@ -14,9 +14,10 @@ export class UserService {
   constructor(private _httpService: HttpService) {}
 
   registration(newUser: RegistartionUser) {
+    console.log("fetching regd url : " + this.registrationUrl);
     return this._httpService.postMethod(
       this.registrationUrl,
-      RegistartionUser,
+      newUser,
       this._httpService.httpOtions
     );
   }

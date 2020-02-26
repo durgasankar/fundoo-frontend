@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
+    this.spinner.show();
     this.registrationForm = this.formBuilder.group(
       {
         firstName: [
@@ -74,17 +75,22 @@ export class RegistrationComponent implements OnInit {
   get userInfo() {
     return this.registrationForm.controls;
   }
-  onSubmit(user) {
-    if (!this.registrationForm.valid) {
-      return;
+  onSubmit() {
+    this.showSpinner = true;
+    if (this.registrationForm.invalid) {
+      return this.router.navigateByUrl("/registration");
     }
-    console.log("User : " + user);
-    this.userservice.registration(user).subscribe(
+
+    console.log("value : ", this.registrationForm.value);
+    this.userservice.registration(this.registrationForm.value).subscribe(
       response => {
+        console.log(response.message);
+        this.matSnackBar.open(response.message, "ok", { duration: 4000 });
         this.router.navigateByUrl("/login");
       },
       error => {
         console.log("error", "registration error");
+        this.matSnackBar.open(error.message, "ok", { duration: 4000 });
       }
     );
   }

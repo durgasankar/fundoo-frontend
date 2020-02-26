@@ -7,16 +7,16 @@
   </head>
   <body>
     <div class="main-div-box">
-      <div class="fundoo">
-        <span class="f">F</span>
-        <span class="u">U</span>
-        <span class="n">N</span>
-        <span class="d">D</span>
-        <span class="o">O</span>
-        <span class="oo">O</span>
+      <div class="fundoo-txt">
+        <span id="f">F</span>
+        <span id="u">U</span>
+        <span id="n">N</span>
+        <span id="d">D</span>
+        <span id="o">O</span>
+        <span id="oo">O</span>
       </div>
       <div class="registration-form-box">
-        <mat-card-title>
+        <mat-card-title color="primary">
           <div class="mat-title">Registration Form</div>
         </mat-card-title>
       </div>
@@ -28,12 +28,22 @@
           <div class="name" fxLayout="row" fxLayoutAlign="space-between center">
             <div class="first-name">
               <mat-card-content>
+                <ngx-spinner
+                  *ngIf="showSpinner"
+                  bdColor="rgba(51,51,51,0.8)"
+                  size="medium"
+                  color="#fff"
+                  type="ball-scale-multiple"
+                >
+                  <p style="font-size: 20px; color: white">Loading...</p>
+                </ngx-spinner>
                 <mat-form-field appearance="outline">
                   <mat-label>Firstname</mat-label>
                   <input
                     matInput
                     placeholder="Enter Firstname"
                     formControlName="firstName"
+                    [(ngModel)]="user.firstName"
                   />
 
                   <mat-error
@@ -60,6 +70,7 @@
                     matInput
                     placeholder="Enter Lastname"
                     formControlName="lastName"
+                    [(ngModel)]="user.lastName"
                   />
                   <mat-error
                     *ngIf="
@@ -84,6 +95,7 @@
                   matInput
                   placeholder="Enter Email"
                   formControlName="emailId"
+                  [(ngModel)]="user.emailId"
                 />
                 <mat-icon matSuffix>mail</mat-icon>
                 <mat-error
@@ -105,6 +117,7 @@
                   matInput
                   placeholder="Enter Phone number"
                   formControlName="mobileNumber"
+                  [(ngModel)]="user.mobileNumber"
                 />
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error
@@ -135,6 +148,7 @@
                     matInput
                     [type]="hide ? 'password' : 'text'"
                     formControlName="password"
+                    [(ngModel)]="user.password"
                   />
                   <mat-error
                     *ngIf="
@@ -155,12 +169,42 @@
                     [type]="hide ? 'password' : 'text'"
                     formControlName="confirmPassword"
                   />
-                  <mat-error
+                  <!-- <mat-error
                     *ngIf="
                       registrationForm.get('password').hasError('required')
                     "
                     >Confirm password should be same</mat-error
                   >
+
+                  <mat-error
+                    *ngIf="
+                      !userInfo.confirmPassword.errors.required &&
+                      userInfo.confirmPassword.errors
+                    "
+                  >
+                    Password Must be same</mat-error
+                  >
+ -->
+
+                  <mat-error
+                    *ngIf="
+                      userInfo.confirmPassword.touched &&
+                      userInfo.confirmPassword.errors
+                    "
+                    class="invalid-feedback"
+                  >
+                    <mat-error *ngIf="userInfo.confirmPassword.errors.required">
+                      Please Re-Enter password</mat-error
+                    >
+                    <mat-error
+                      *ngIf="
+                        !userInfo.confirmPassword.errors.required &&
+                        userInfo.confirmPassword.errors
+                      "
+                    >
+                      Password Must be same</mat-error
+                    >
+                  </mat-error>
                 </mat-form-field>
               </mat-card-content>
             </div>
