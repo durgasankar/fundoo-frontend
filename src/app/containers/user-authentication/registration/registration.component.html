@@ -169,23 +169,6 @@
                     [type]="hide ? 'password' : 'text'"
                     formControlName="confirmPassword"
                   />
-                  <!-- <mat-error
-                    *ngIf="
-                      registrationForm.get('password').hasError('required')
-                    "
-                    >Confirm password should be same</mat-error
-                  >
-
-                  <mat-error
-                    *ngIf="
-                      !userInfo.confirmPassword.errors.required &&
-                      userInfo.confirmPassword.errors
-                    "
-                  >
-                    Password Must be same</mat-error
-                  >
- -->
-
                   <mat-error
                     *ngIf="
                       userInfo.confirmPassword.touched &&

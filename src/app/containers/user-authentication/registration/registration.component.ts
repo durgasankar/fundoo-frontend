@@ -85,12 +85,19 @@ export class RegistrationComponent implements OnInit {
     this.userservice.registration(this.registrationForm.value).subscribe(
       response => {
         console.log(response.message);
-        this.matSnackBar.open(response.message, "ok", { duration: 4000 });
+        this.matSnackBar.open(response.message, "ok", {
+          duration: 5000
+        });
         this.router.navigateByUrl("/login");
       },
-      error => {
-        console.log("error", "registration error");
-        this.matSnackBar.open(error.message, "ok", { duration: 4000 });
+      errors => {
+        console.log("errors", "registration error");
+        console.log("errors : ", errors);
+        this.matSnackBar.open(errors.error.message, "verify", {
+          duration: 5000
+        });
+        this.showSpinner = false;
+        this.router.navigateByUrl("/registration");
       }
     );
   }
