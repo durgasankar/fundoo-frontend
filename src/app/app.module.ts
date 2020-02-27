@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LogoComponent } from './containers/logo/logo.component';
 import { ForgotPasswordComponent } from './containers/user-authentication/forgot-password/forgot-password.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -39,7 +40,8 @@ const MaterialComponents = [
     LoginComponent,
     RegistrationComponent,
     LogoComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

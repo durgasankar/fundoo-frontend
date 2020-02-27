@@ -3,13 +3,13 @@
   padding: 0px;
   text-decoration: none;
 }
-body {
-  background-image: url(src/assets/login_background_image.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-}
+// body {
+//   background-image: url(src/assets/login_background_image.png);
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+//   position: relative;
+// }
 mat-card {
   margin: 5%;
   width: 25%;
@@ -22,4 +22,12 @@ mat-card {
 
 .logo {
   margin-bottom: 4%;
+}
+mat-card-title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+mat-icon {
+  opacity: 0.7;
 }

@@ -9,9 +9,7 @@
     <div fxLayout="column" fxLayoutAlign="center center" class="login-box">
       <mat-card>
         <div class="logo"><app-logo align="center"></app-logo></div>
-        <mat-card-title
-          style="display: flex; flex-direction: column; text-align: center;"
-        >
+        <mat-card-title>
           <span class="mat-title">
             Sign in!
           </span>
@@ -25,6 +23,15 @@
             (ngSubmit)="loginForm.valid && onSubmit()"
           >
             <mat-card-content>
+              <ngx-spinner
+                *ngIf="showSpinner"
+                bdColor="rgba(51,51,51,0.8)"
+                size="medium"
+                color="#fff"
+                type="ball-scale-multiple"
+              >
+                <p style="font-size: 20px; color: white">Loading...</p>
+              </ngx-spinner>
               <div class="emailId">
                 <mat-form-field
                   appearance="outline"
@@ -93,6 +100,7 @@
                   color="primary"
                   type="submit"
                   class="login-btm"
+                  [disabled]="!loginForm.valid"
                 >
                   Login
                 </button>

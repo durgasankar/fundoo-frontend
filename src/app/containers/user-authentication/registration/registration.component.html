@@ -145,12 +145,31 @@
                     formControlName="password"
                     [(ngModel)]="user.password"
                   />
-                  <mat-error
-                    *ngIf="
-                      registrationForm.get('password').hasError('required')
-                    "
-                    >please provide a strong password</mat-error
-                  >
+                  <mat-error>
+                    <mat-error
+                      *ngIf="
+                        registrationForm.get('password').hasError('required')
+                      "
+                      >please provide a strong password</mat-error
+                    >
+                    <mat-error
+                      *ngIf="
+                        registrationForm.controls['password'].hasError(
+                          'minlength'
+                        )
+                      "
+                      >password should be greater than 3 character
+                    </mat-error>
+                    <mat-error
+                      *ngIf="
+                        registrationForm.controls['password'].hasError(
+                          'maxlength'
+                        )
+                      "
+                    >
+                      password should not exceed 10 character
+                    </mat-error>
+                  </mat-error>
                 </mat-form-field>
               </mat-card-content>
             </div>

@@ -2,6 +2,9 @@ import { UserService } from "src/app/services/user.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LoginUser } from "./../../../models/login-user";
 import { Component, OnInit } from "@angular/core";
+import { NgxSpinnerService } from "ngx-spinner";
+import { MatSnackBar } from "@angular/material";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -11,12 +14,17 @@ import { Component, OnInit } from "@angular/core";
 export class LoginComponent implements OnInit {
   loginDto: LoginUser = new LoginUser();
   loginForm: FormGroup;
+  showSpinner: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
-    private _userService: UserService
+    private _userService: UserService,
+    private matSnackBar: MatSnackBar,
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
+    this.spinner.show();
     this.loginForm = this.formBuilder.group({
       emailId: [
         null,
@@ -33,5 +41,40 @@ export class LoginComponent implements OnInit {
         ])
       ]
     });
+  }
+
+  onSubmit() {
+    this.showSpinner = true;
+    if (this.loginForm.invalid) {
+      return this.router.navigateByUrl("/login");
+    }
+    console.log("login value", this.loginForm.value);
+    this._userService.login(this.loginForm.value).subscribe(
+      response => {
+        console.log("response message : ", response);
+        this.matSnackBar.open(response.message, "cancel", { duration: 5000 });
+        sessionStorage.setItem("token", response.token);
+        this.showSpinner = false;
+        this.router.navigateByUrl("/dashboard");
+      },
+      errors => {
+        console.log("error : ", errors);
+        if (errors.error.statusCode === 401) {
+          console.log("bad credentials : ", errors.error);
+          this.matSnackBar.open(errors.error.message, "cancel", {
+            duration: 5000
+          });
+          this.showSpinner = false;
+          this.router.navigateByUrl("/login");
+        } else {
+          console.log("un authenticated : ", errors.error);
+          this.matSnackBar.open(errors.error.message, "Opps!", {
+            duration: 5000
+          });
+          this.showSpinner = false;
+          this.router.navigateByUrl("/login");
+        }
+      }
+    );
   }
 }
