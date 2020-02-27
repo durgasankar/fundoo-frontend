@@ -1,3 +1,4 @@
+import { ForgotPasswordComponent } from "./containers/user-authentication/forgot-password/forgot-password.component";
 import { LoginComponent } from "./containers/user-authentication/login/login.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "registration", component: RegistrationComponent },
   { path: "login", component: LoginComponent },
+  { path: "forgotPassword", component: ForgotPasswordComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 

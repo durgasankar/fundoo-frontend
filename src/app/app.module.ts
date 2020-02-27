@@ -21,6 +21,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LogoComponent } from './containers/logo/logo.component';
+import { ForgotPasswordComponent } from './containers/user-authentication/forgot-password/forgot-password.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -37,7 +38,8 @@ const MaterialComponents = [
     PageNotFoundComponent,
     LoginComponent,
     RegistrationComponent,
-    LogoComponent
+    LogoComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

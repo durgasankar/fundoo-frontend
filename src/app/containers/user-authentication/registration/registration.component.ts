@@ -91,7 +91,6 @@ export class RegistrationComponent implements OnInit {
         this.router.navigateByUrl("/login");
       },
       errors => {
-        console.log("errors", "registration error");
         console.log("errors : ", errors);
         this.matSnackBar.open(errors.error.message, "verify", {
           duration: 5000
