@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from "./containers/page-not-found/page-not-foun
 import { NgxSpinnerModule } from "ngx-spinner";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { LogoComponent } from './containers/logo/logo.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -35,7 +36,8 @@ const MaterialComponents = [
     AppComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
