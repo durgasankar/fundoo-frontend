@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   USER_API_URL: "http://localhost:8081/user",
-  REGISTRATION_URL: "/registration"
+  REGISTRATION_URL: "/registration",
+  LOGIN_URL: "/login"
 };
 
 /*

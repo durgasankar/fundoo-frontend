@@ -3,10 +3,18 @@
   padding: 0px;
   text-decoration: none;
 }
+body {
+  background-image: url(src/assets/login_background_image.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
 mat-card {
   margin: 5%;
   width: 25%;
   height: 50%;
+  background: rgba(128, 128, 128, 0.1);
 }
 .new-user {
   margin-left: 5em;

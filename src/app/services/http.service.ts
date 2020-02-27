@@ -11,7 +11,7 @@ export class HttpService {
   };
   constructor(private _httpClient: HttpClient) {}
 
-  public postMethod(url: any, body: any, options: any): Observable<any> {
+  public postMethod(url: string, body: any, options: any): Observable<any> {
     return this._httpClient.post(url, body, options);
   }
 }
