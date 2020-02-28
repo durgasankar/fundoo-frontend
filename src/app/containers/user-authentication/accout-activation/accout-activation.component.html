@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main-div" align="center">
+      <div class="logo">
+        <app-logo></app-logo>
+      </div>
+      <ngx-spinner
+        *ngIf="showSpinner"
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple"
+      >
+        <p style="font-size: 20px; color: white">Loading...</p>
+      </ngx-spinner>
+      <form (ngSubmit)="onSubmit()">
+        <div class="body-Content">
+          <button mat-stroked-button color="primary" type="submit">
+            Click to activate Account
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

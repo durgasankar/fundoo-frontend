@@ -4,6 +4,7 @@ import { HttpService } from "./http.service";
 import { Injectable, NgModule } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { LoginUser } from "../models/login-user";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -14,6 +15,9 @@ export class UserService {
 
   private loginUrl: string = `${environment.USER_API_URL +
     environment.LOGIN_URL}`;
+
+  private verificationUrl: string = `${environment.USER_API_URL +
+    environment.ACTIVATE_ACCOUNT_URL}`;
 
   constructor(private _httpService: HttpService) {}
 
@@ -30,6 +34,14 @@ export class UserService {
     return this._httpService.postMethod(
       this.loginUrl,
       loginDto,
+      this._httpService.httpOtions
+    );
+  }
+
+  public activateUser(user: any, token: string): Observable<any> {
+    return this._httpService.putMethod(
+      `${this.verificationUrl}/${token}`,
+      user,
       this._httpService.httpOtions
     );
   }

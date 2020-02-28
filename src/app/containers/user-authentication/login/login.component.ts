@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       response => {
         console.log("response message : ", response);
         this.matSnackBar.open(response.message, "cancel", { duration: 5000 });
-        sessionStorage.setItem("token", response.token);
+        localStorage.setItem("token", response.token);
         this.showSpinner = false;
         this.router.navigateByUrl("/dashboard");
       },
@@ -64,15 +64,22 @@ export class LoginComponent implements OnInit {
           this.matSnackBar.open(errors.error.message, "cancel", {
             duration: 5000
           });
-          this.showSpinner = false;
           this.router.navigateByUrl("/login");
-        } else {
-          console.log("un authenticated : ", errors.error);
+          this.showSpinner = false;
+        } else if (errors.error.statusCode === 400) {
+          console.log("not found user : ", errors.error.message);
           this.matSnackBar.open(errors.error.message, "Opps!", {
             duration: 5000
           });
+          this.router.navigateByUrl("/registration");
           this.showSpinner = false;
+        } else {
+          console.log("un authenticated : ", errors.error);
+          this.matSnackBar.open(errors.error.message, "ok", {
+            duration: 5000
+          });
           this.router.navigateByUrl("/login");
+          this.showSpinner = false;
         }
       }
     );

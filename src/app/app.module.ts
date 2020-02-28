@@ -20,9 +20,10 @@ import { PageNotFoundComponent } from "./containers/page-not-found/page-not-foun
 import { NgxSpinnerModule } from "ngx-spinner";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { LogoComponent } from './containers/logo/logo.component';
-import { ForgotPasswordComponent } from './containers/user-authentication/forgot-password/forgot-password.component';
-import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { LogoComponent } from "./containers/logo/logo.component";
+import { ForgotPasswordComponent } from "./containers/user-authentication/forgot-password/forgot-password.component";
+import { DashboardComponent } from "./containers/dashboard/dashboard.component";
+import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
 
 const MaterialComponents = [
   MatButtonModule,
@@ -41,7 +42,8 @@ const MaterialComponents = [
     RegistrationComponent,
     LogoComponent,
     ForgotPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccoutActivationComponent
   ],
   imports: [
     BrowserModule,
