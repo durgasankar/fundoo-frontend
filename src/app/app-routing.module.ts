@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: "registration", component: RegistrationComponent },
   { path: "verification/:token", component: AccoutActivationComponent },
   { path: "login", component: LoginComponent },
+  { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "dashboard", component: DashboardComponent },
-  { path: "forgotPassword", component: ForgotPasswordComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 

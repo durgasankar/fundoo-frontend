@@ -1,4 +1,3 @@
-import { HttpClient } from "@angular/common/http";
 import { RegistartionUser } from "./../models/registartion-user";
 import { HttpService } from "./http.service";
 import { Injectable, NgModule } from "@angular/core";
@@ -18,6 +17,9 @@ export class UserService {
 
   private verificationUrl: string = `${environment.USER_API_URL +
     environment.ACTIVATE_ACCOUNT_URL}`;
+
+  private forgotPasswordUrl: string = `${environment.USER_API_URL +
+    environment.FORGOT_PASSWORD_URL}`;
 
   constructor(private _httpService: HttpService) {}
 
@@ -42,6 +44,15 @@ export class UserService {
     return this._httpService.putMethod(
       `${this.verificationUrl}/${token}`,
       user,
+      this._httpService.httpOtions
+    );
+  }
+
+  public forgotPassword(emailDto: any): Observable<any> {
+    console.log("fetching forgot password url : ", this.forgotPasswordUrl);
+    return this._httpService.postMethod(
+      this.forgotPasswordUrl,
+      emailDto,
       this._httpService.httpOtions
     );
   }
