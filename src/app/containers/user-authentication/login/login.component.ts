@@ -1,3 +1,4 @@
+import { environment } from "src/environments/environment";
 import { UserService } from "src/app/services/user.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LoginUser } from "./../../../models/login-user";
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.showSpinner = true;
     if (this.loginForm.invalid) {
-      return this.router.navigateByUrl("/login");
+      return this.router.navigateByUrl(`${environment.LOGIN_URL}`);
     }
     console.log("login value", this.loginForm.value);
     this._userService.login(this.loginForm.value).subscribe(
@@ -71,14 +72,14 @@ export class LoginComponent implements OnInit {
           this.matSnackBar.open(errors.error.message, "Opps!", {
             duration: 5000
           });
-          this.router.navigateByUrl("/registration");
+          this.router.navigateByUrl(`${environment.REGISTRATION_URL}`);
           this.showSpinner = false;
         } else {
           console.log("un authenticated : ", errors.error);
           this.matSnackBar.open(errors.error.message, "ok", {
             duration: 5000
           });
-          this.router.navigateByUrl("/login");
+          this.router.navigateByUrl(`${environment.LOGIN_URL}`);
           this.showSpinner = false;
         }
       }

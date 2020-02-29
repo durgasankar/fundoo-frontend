@@ -1,3 +1,4 @@
+import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { ForgotPasswordComponent } from "./containers/user-authentication/forgot-password/forgot-password.component";
 import { LoginComponent } from "./containers/user-authentication/login/login.component";
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "verification/:token", component: AccoutActivationComponent },
   { path: "login", component: LoginComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
+  { path: "update-password", component: UpdatePasswordComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
