@@ -21,6 +21,9 @@ export class UserService {
   private forgotPasswordUrl: string = `${environment.USER_API_URL +
     environment.FORGOT_PASSWORD_URL}`;
 
+  private updatePasswordUrl: string = `${environment.USER_API_URL +
+    environment.UPDATE_PASSWORD_URL}`;
+
   constructor(private _httpService: HttpService) {}
 
   public registration(registrationDto: RegistartionUser) {
@@ -53,6 +56,13 @@ export class UserService {
     return this._httpService.postMethod(
       this.forgotPasswordUrl,
       emailDto,
+      this._httpService.httpOtions
+    );
+  }
+  public updatePassword(updatePassword: any, token: string): Observable<any> {
+    return this._httpService.putMethod(
+      `${this.updatePasswordUrl}/${token}`,
+      updatePassword,
       this._httpService.httpOtions
     );
   }
