@@ -13,7 +13,6 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-  loginDto: LoginUser = new LoginUser();
   loginForm: FormGroup;
   showSpinner: boolean = false;
   constructor(

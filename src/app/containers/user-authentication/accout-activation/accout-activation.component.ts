@@ -24,6 +24,7 @@ export class AccoutActivationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.spinner.show();
     this.activatedRoute.paramMap.subscribe((parameters: ParamMap) => {
       this.token = parameters.get("token");
     });
@@ -40,8 +41,8 @@ export class AccoutActivationComponent implements OnInit {
           "ok",
           { duration: 5000 }
         );
-        this.showSpinner = false;
         this.router.navigateByUrl("/login");
+        this.showSpinner = false;
       },
       errors => {
         console.log("errors", errors);
