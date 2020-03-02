@@ -1,3 +1,4 @@
+import { environment } from "./../../../../environments/environment";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { UserService } from "src/app/services/user.service";
@@ -49,6 +50,22 @@ export class AccoutActivationComponent implements OnInit {
         this.matSnackBar.open(errors.error.message, "cancel", {
           duration: 5000
         });
+        if (errors.error.statusCode === 422) {
+          this.matSnackBar.open(errors.error.message, "Opps!", {
+            duration: 5000
+          });
+          this.router.navigateByUrl(`${environment.LOGIN_URL}`);
+        } else if (errors.error.statusCode === 404) {
+          this.matSnackBar.open(errors.error.message, "cancel", {
+            duration: 5000
+          });
+          this.router.navigateByUrl(`${environment.REGISTRATION_URL}`);
+        } else {
+          this.matSnackBar.open(errors.error.message, "cancel", {
+            duration: 5000
+          });
+          this.router.navigateByUrl(`${environment.LOGIN_URL}`);
+        }
         this.showSpinner = false;
       }
     );

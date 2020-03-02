@@ -66,11 +66,15 @@ export class LoginComponent implements OnInit {
           });
           this.router.navigateByUrl("/login");
           this.showSpinner = false;
-        } else if (errors.error.statusCode === 400) {
+        } else if (errors.error.statusCode === 404) {
           console.log("not found user : ", errors.error.message);
-          this.matSnackBar.open(errors.error.message, "Opps!", {
-            duration: 5000
-          });
+          this.matSnackBar.open(
+            errors.error.message + ", Please register.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
           this.router.navigateByUrl(`${environment.REGISTRATION_URL}`);
           this.showSpinner = false;
         } else {
