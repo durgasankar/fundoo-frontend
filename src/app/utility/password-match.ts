@@ -1,6 +1,7 @@
 import { FormGroup } from "@angular/forms";
 
 export function MatchPassword(password: string, confirmPassword: string) {
+  console.log("inside password match!");
   return (formGroup: FormGroup) => {
     const fetchedPassword = formGroup.controls[password];
     const fetchedMatchingPassword = formGroup.controls[confirmPassword];

@@ -11,7 +11,30 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatSnackBarModule,
-  MatGridListModule
+  MatGridListModule,
+  MatCheckboxModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatRadioModule,
+  MatSliderModule,
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  MatTooltipModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
 } from "@angular/material";
 
 import { LoginComponent } from "./containers/user-authentication/login/login.component";
@@ -24,16 +47,41 @@ import { LogoComponent } from "./containers/logo/logo.component";
 import { ForgotPasswordComponent } from "./containers/user-authentication/forgot-password/forgot-password.component";
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
-import { UpdatePasswordComponent } from './containers/user-authentication/update-password/update-password.component';
-
+import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
 const MaterialComponents = [
+  BrowserModule,
+  BrowserAnimationsModule,
+  MatCheckboxModule,
+  MatCheckboxModule,
   MatButtonModule,
   MatInputModule,
-  MatCardModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
   MatFormFieldModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
+  MatChipsModule,
   MatIconModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  MatTooltipModule,
   MatSnackBarModule,
-  MatGridListModule
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
 ];
 @NgModule({
   declarations: [

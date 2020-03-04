@@ -61,7 +61,7 @@ export class AccoutActivationComponent implements OnInit {
           });
           this.router.navigateByUrl(`${environment.REGISTRATION_URL}`);
         } else {
-          this.matSnackBar.open(errors.error.message, "cancel", {
+          this.matSnackBar.open(errors.error.message, "ok", {
             duration: 5000
           });
           this.router.navigateByUrl(`${environment.LOGIN_URL}`);
