@@ -1,200 +1,207 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
-  <mat-toolbar class=" tool" color="WHITE" fxLayout="row">
-    <div
-      class="app-icon"
-      fxLayout="row"
-      fxLayoutAlign="start start"
-      fxLayoutAlign="space-around center"
-      fxFlex="15"
-      fxFlex.xs="25"
-    >
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
-        <mat-icon>menu</mat-icon>
-      </button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard</title>
+  </head>
+  <body>
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+      <mat-toolbar class=" tool" color="WHITE" fxLayout="row">
+        <div
+          class="app-icon"
+          fxLayout="row"
+          fxLayoutAlign="start start"
+          fxLayoutAlign="space-around center"
+          fxFlex="15"
+          fxFlex.xs="25"
+        >
+          <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
+            <mat-icon>menu</mat-icon>
+          </button>
 
-      <div class="img-icon" fxLayoutAlign="start center">
-        <img class="img" src="../assets/logo/fundoo-logo.png" />
-        <span fxHide.xs="true">{{ titlename }}</span>
-        <span
-          style="margin-left:1%;margin-top:4%;"
-          *ngIf="titlename == null"
-          fxHide.xs="true"
-          ><app-logo></app-logo
-        ></span>
-      </div>
-    </div>
-
-    <div
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      fxFlex.xs="70"
-      fxFlex="70"
-      class="search"
-    >
-      <!-- <form class="search"> -->
-      <button mat-icon-button fxHide.xs="true">
-        <mat-icon>search</mat-icon>
-      </button>
-      <input
-        matTooltip="Search"
-        placeholder="Search"
-        class="input"
-        [(ngModel)]="search"
-        (keyup)="lookup()"
-      />
-      <!-- </form> -->
-    </div>
-
-    <div id="refresh" fxLayout="row">
-      <button mat-icon-button>
-        <mat-icon>refresh</mat-icon>
-      </button>
-    </div>
-
-    <!-- <div fxLayout="row" fxLayoutAlign="center center" fxFlex="10" fxLayoutGap="30px">
-        <button mat-icon-button fxHide.xs="true">
-          <mat-icon fxFlex="10" (click)="gridView()">view_stream</mat-icon>
-        </button>
-      </div> -->
-
-    <div
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      fxFlex="10"
-      fxLayoutGap="30px"
-    >
-      <button
-        mat-icon-button
-        style="margin-top:10px;margin-left: 100px; outline: none;"
-        class="materialicons"
-        *ngIf="!grid"
-        (click)="gridView()"
-        matTooltip="List view"
-        fxShow="true"
-      >
-        <i class="material-icons">view_stream</i>
-      </button>
-      <button
-        fxShow
-        fxHide.xs
-        fxShow
-        fxHide.xs
-        mat-icon-button
-        style="margin-top:10px;margin-left: 100px; outline: none;"
-        *ngIf="grid"
-        (click)="gridView()"
-        matTooltip="Grid view"
-        fxShow="true"
-      >
-        <i class="material-icons">view_module</i>
-      </button>
-    </div>
-
-    <div>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <img mat-card-avatar src="{{ profilePicUser }}" class="profile1" />
-      </button>
-
-      <mat-menu #menu="matMenu">
-        <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-          <mat-card style="overflow: hidden">
-            <div class="image-container" style="padding-top: 50%;">
-              <!-- <img class="topic-avatar" mat-card-avatar src="{{ profilePicUser }}">
-                  <input type="file" (change)="onFileSelected($event)"> -->
-            </div>
-            <div>
-              <img
-                class="topic-avatar"
-                mat-card-avatar
-                src="{{ profilePicUser }}"
-              />
-              <label class="btn-upload">
-                <input type="file" name="fileupload" />
-                <button class="btn">Change</button>
-              </label>
-            </div>
-          </mat-card>
+          <div class="img-icon" fxLayoutAlign="start center">
+            <img class="img" src="../assets/logo/fundoo-logo.png" />
+            <span fxHide.xs="true">{{ titlename }}</span>
+            <span
+              style="margin-left:1%;margin-top:4%;"
+              *ngIf="titlename == null"
+              fxHide.xs="true"
+              ><app-logo></app-logo
+            ></span>
+          </div>
         </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          fxFlex.xs="70"
+          fxFlex="70"
+          class="search"
+        >
+          <!-- <form class="search"> -->
+          <button mat-icon-button fxHide.xs="true">
+            <mat-icon>search</mat-icon>
+          </button>
+          <input matTooltip="Search" placeholder="Search" class="input" />
+          <!-- </form> -->
+        </div>
+
+        <div id="refresh" fxLayout="row">
+          <button mat-icon-button matTooltip="refresh">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-icon-button matTooltip="settings">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          fxFlex="10"
+          fxLayoutGap="30px"
+        >
+          <button
+            mat-icon-button
+            *ngIf="!grid"
+            matTooltip="List view"
+            (click)="onClickView()"
+          >
+            <mat-icon>view_stream</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            *ngIf="grid"
+            matTooltip="Grid view"
+            (click)="onClickView()"
+          >
+            <mat-icon>view_module</mat-icon>
+          </button>
+        </div>
+        <!-- fundoo apps -->
+        <div>
+          <button mat-icon-button matTooltip="fundoo apps">
+            <mat-icon>apps</mat-icon>
+          </button>
+        </div>
+        <!-- on click it will open menu -->
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <img mat-card-avatar src="{{ profilePicUser }}" class="profile1" />
+          </button>
+          <!-- menu for sign out -->
+          <mat-menu #menu="matMenu">
+            <div
+              fxLayout="row"
+              fxFlex="100"
+              fxLayoutAlign="space-between center"
+            >
+              <mat-card style="overflow: hidden">
+                <div class="image-container" style="padding-top: 50%;">
+                  <!-- <img class="topic-avatar" mat-card-avatar src="{{ profilePicUser }}">
+                    <input type="file" (change)="onFileSelected($event)"> -->
+                </div>
+                <div>
+                  <img
+                    class="topic-avatar"
+                    mat-card-avatar
+                    src="{{ profilePicUser }}"
+                  />
+                  <label class="btn-upload">
+                    <input type="file" name="fileupload" />
+                    <button class="btn">Change</button>
+                  </label>
+                </div>
+              </mat-card>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div
+              fxLayout="row"
+              fxFlex="100"
+              fxLayoutAlign="space-around  center"
+            >
+              <button mat-raised-button>Sign out</button>
+            </div>
+          </mat-menu>
+        </div>
+      </mat-toolbar>
+      <!-- Side nav bar -->
+      <div class="sidenav">
         <mat-divider></mat-divider>
 
-        <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-around  center">
-          <button mat-raised-button (click)="logout()">Sign out</button>
-        </div>
-      </mat-menu>
+        <mat-sidenav-container style="height:100vh;">
+          <mat-sidenav #sidenav style="width: 240px;" mode="side">
+            <mat-nav-list>
+              <div class="menu-container">
+                <div
+                  class="remainder-notes-container"
+                  fxLayout="column"
+                  fxLayoutAlign="space-around start"
+                >
+                  <div>
+                    <button mat-button id="sidenav-button">
+                      <mat-icon id="sidenav-icon">lightbulb_outline</mat-icon>
+                      Notes
+                    </button>
+                  </div>
+                  <!-- logo -->
+                  <div>
+                    <button mat-button id="sidenav-button">
+                      <mat-icon id="sidenav-icon">notifications_none</mat-icon
+                      >Reminders
+                    </button>
+                  </div>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div
+                  class="labels-button"
+                  fxLayout="column"
+                  fxLayoutAlign="space-around start"
+                  fxLayoutGap="20px"
+                >
+                  <div id="label_name">LABELS</div>
+                  <!-- labesls will be posted -->
+
+                  <div class="create-label">
+                    <button mat-button>
+                      <mat-icon>create</mat-icon>Create Labels
+                    </button>
+                  </div>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div
+                  class="archive-trash-container"
+                  fxLayout="column"
+                  fxLayoutAlign="space-around start"
+                >
+                  <div>
+                    <button mat-button id="sidenav-button">
+                      <mat-icon id="sidenav-icon">archive</mat-icon>
+                      Archive
+                    </button>
+                  </div>
+                  <div>
+                    <button mat-button id="sidenav-button">
+                      <mat-icon id="sidenav-icon">delete</mat-icon>Trash
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-nav-list>
+          </mat-sidenav>
+          <mat-sidenav-content>
+            notes to be diasplayed
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+      </div>
     </div>
-  </mat-toolbar>
-  <!-- Side nav bar -->
-  <div class="sidenav">
-    <mat-divider></mat-divider>
-
-    <mat-sidenav-container style="height:100vh;">
-      <mat-sidenav #sidenav style="width: 240px;" mode="side">
-        <mat-nav-list>
-          <div
-            class="mat_divider"
-            fxLayout="column"
-            fxLayoutAlign="space-around start"
-            fxLayoutGap="20px"
-          >
-            <div>
-              <button mat-button>
-                <!-- <img src="../../../assets/images/notes.svg"> -->
-                <i class="material-icons">emoji_objects</i>
-                Notes
-              </button>
-            </div>
-
-            <div>
-              <button mat-button>
-                <img src="../../assets/logo/notification.svg" />
-                reminders
-              </button>
-            </div>
-          </div>
-
-          <mat-divider></mat-divider>
-
-          <div
-            class="mat_divider"
-            fxLayout="column"
-            fxLayoutAlign="space-around start"
-            fxLayoutGap="20px"
-          >
-            <div id="label_name">LABELS</div>
-            <!-- labesls will be posted -->
-
-            <div>
-              <button mat-button>
-                <img src="../../assets/logo/edit-24px.svg" />
-                create labels
-              </button>
-            </div>
-          </div>
-
-          <mat-divider></mat-divider>
-
-          <div
-            class="mat_divider"
-            fxLayout="column"
-            fxLayoutAlign="space-around start"
-            fxLayoutGap="20px"
-          >
-            <div>
-              <button mat-button>
-                <!-- <img src="../..//assets/unarchive.svg">
-                  archive -->
-                <mat-icon>archive</mat-icon> Archive
-              </button>
-            </div>
-            <div>
-              <button mat-button>
-                <img src="../../assets/logo/delete-24px.svg" />
-                trash
-              </button>
-            </div>
-          </div>
-        </mat-nav-list>
-      </mat-sidenav>
-    </mat-sidenav-container>
-  </div>
-</div>
+  </body>
+</html>

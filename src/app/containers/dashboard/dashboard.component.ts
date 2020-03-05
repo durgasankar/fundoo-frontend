@@ -17,4 +17,11 @@ export class DashboardComponent implements OnInit {
   profilePicUser;
   url;
   ngOnInit() {}
+  onClickView() {
+    if (this.grid === true) {
+      this.grid = false;
+    } else {
+      this.grid = true;
+    }
+  }
 }
