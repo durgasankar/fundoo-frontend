@@ -52,8 +52,13 @@ export class LoginComponent implements OnInit {
     this._userService.login(this.loginForm.value).subscribe(
       response => {
         console.log("response message : ", response);
-        this.matSnackBar.open(response.message, "cancel", { duration: 5000 });
+        this.matSnackBar.open(
+          "Mr/s. " + response.firstName + ", " + response.message,
+          "cancel",
+          { duration: 5000 }
+        );
         localStorage.setItem("token", response.token);
+        localStorage.setItem("firstName", response.firstName);
         this.showSpinner = false;
         this.router.navigateByUrl("/dashboard");
       },

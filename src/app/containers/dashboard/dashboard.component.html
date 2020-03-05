@@ -48,7 +48,7 @@
         </div>
 
         <div id="refresh" fxLayout="row">
-          <button mat-icon-button matTooltip="refresh">
+          <button mat-icon-button matTooltip="refresh" (click)="refresh()">
             <mat-icon>refresh</mat-icon>
           </button>
         </div>
@@ -124,7 +124,7 @@
               fxFlex="100"
               fxLayoutAlign="space-around  center"
             >
-              <button mat-raised-button>Sign out</button>
+              <button mat-raised-button (click)="signOut()">Sign out</button>
             </div>
           </mat-menu>
         </div>
@@ -198,6 +198,17 @@
             </mat-nav-list>
           </mat-sidenav>
           <mat-sidenav-content>
+            <div class="spinner">
+              <ngx-spinner
+                *ngIf="showSpinner"
+                bdColor="rgba(51,51,51,0.8)"
+                size="medium"
+                color="#fff"
+                type="ball-scale-multiple"
+              >
+                <p style="font-size: 20px; color: white">Loading...</p>
+              </ngx-spinner>
+            </div>
             notes to be diasplayed
           </mat-sidenav-content>
         </mat-sidenav-container>
