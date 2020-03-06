@@ -100,32 +100,42 @@
               fxLayoutAlign="space-between center"
             >
               <mat-card style="overflow: hidden">
-                <div class="image-container" style="padding-top: 50%;">
-                  <!-- <img class="topic-avatar" mat-card-avatar src="{{ profilePicUser }}">
-                    <input type="file" (change)="onFileSelected($event)"> -->
-                </div>
-                <div>
-                  <img
-                    class="topic-avatar"
-                    mat-card-avatar
-                    src="{{ profilePicUser }}"
-                  />
-                  <label class="btn-upload">
-                    <input type="file" name="fileupload" />
-                    <button class="btn">Change</button>
-                  </label>
-                </div>
+                <mat-card-content>
+                  <div>
+                    <img
+                      class="topic-avatar"
+                      mat-card-avatar
+                      src="{{ profilePicUser }}"
+                    />
+                    <label class="btn-upload">
+                      <input type="file" name="fileupload" />
+                      <button class="btn">Change</button>
+                    </label>
+                  </div>
+                  <div
+                    class="firstName"
+                    style="margin-top: 15px;
+                  text-align: center;"
+                  >
+                    {{ firstName }}
+                  </div>
+                </mat-card-content>
+                <mat-card-actions align="center">
+                  <button mat-raised-button (click)="signOut()">
+                    Sign out
+                  </button>
+                </mat-card-actions>
               </mat-card>
             </div>
             <mat-divider></mat-divider>
 
-            <div
+            <!-- <div
               fxLayout="row"
               fxFlex="100"
               fxLayoutAlign="space-around  center"
             >
-              <button mat-raised-button (click)="signOut()">Sign out</button>
-            </div>
+              
+            </div> -->
           </mat-menu>
         </div>
       </mat-toolbar>

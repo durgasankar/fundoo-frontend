@@ -11,6 +11,8 @@ import { MatSnackBar } from "@angular/material";
 })
 export class DashboardComponent implements OnInit {
   showSpinner: boolean = false;
+  // static profile picture
+  profilePicUser: any = "../assets/durgasankar.jpg";
   constructor(
     private router: Router,
     private spinner: NgxSpinnerService,
@@ -19,6 +21,7 @@ export class DashboardComponent implements OnInit {
   grid: boolean = true;
   localstorage_image: any;
   imageurl: string;
+  firstName: string = localStorage.getItem("firstName");
   ngOnInit() {}
   onClickView() {
     return this.grid === true ? (this.grid = false) : (this.grid = true);
@@ -31,13 +34,9 @@ export class DashboardComponent implements OnInit {
     console.log("signing out => clearing token");
     this.spinner.show();
 
-    this.matSnackBar.open(
-      localStorage.getItem("firstName") + " sucessfully logged out",
-      "ok",
-      {
-        duration: 5000
-      }
-    );
+    this.matSnackBar.open(this.firstName + " sucessfully logged out", "ok", {
+      duration: 5000
+    });
     this.router.navigateByUrl(`${environment.LOGIN_URL}`);
     this.showSpinner = false;
     localStorage.clear();
