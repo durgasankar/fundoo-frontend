@@ -4,6 +4,7 @@ import { Injectable, NgModule } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { LoginUser } from "../models/login-user";
 import { Observable } from "rxjs";
+import { HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -26,12 +27,18 @@ export class UserService {
 
   constructor(private _httpService: HttpService) {}
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      "content-type": "application/json"
+    })
+  };
+
   public registration(registrationDto: RegistartionUser) {
     console.log("fetching regd url : ", this.registrationUrl);
     return this._httpService.postMethod(
       this.registrationUrl,
       registrationDto,
-      this._httpService.httpOtions
+      this.httpOptions
     );
   }
   public login(loginDto: LoginUser) {
@@ -39,7 +46,7 @@ export class UserService {
     return this._httpService.postMethod(
       this.loginUrl,
       loginDto,
-      this._httpService.httpOtions
+      this.httpOptions
     );
   }
 
@@ -47,7 +54,7 @@ export class UserService {
     return this._httpService.putMethod(
       `${this.verificationUrl}/${token}`,
       user,
-      this._httpService.httpOtions
+      this.httpOptions
     );
   }
 
@@ -56,14 +63,14 @@ export class UserService {
     return this._httpService.postMethod(
       this.forgotPasswordUrl,
       emailDto,
-      this._httpService.httpOtions
+      this.httpOptions
     );
   }
   public updatePassword(updatePassword: any, token: string): Observable<any> {
     return this._httpService.putMethod(
       `${this.updatePasswordUrl}/${token}`,
       updatePassword,
-      this._httpService.httpOtions
+      this.httpOptions
     );
   }
 }

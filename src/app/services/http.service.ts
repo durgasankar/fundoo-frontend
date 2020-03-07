@@ -6,13 +6,6 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class HttpService {
-  // fetching token from local storage stored during login
-  public httpOtions = {
-    headers: new HttpHeaders({
-      "content-type": "application/json",
-      token: localStorage.getItem("token")
-    })
-  };
   constructor(private _httpClient: HttpClient) {}
 
   public postMethod(url: string, body: any, options: any): Observable<any> {
