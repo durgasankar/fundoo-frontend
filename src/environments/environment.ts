@@ -5,12 +5,15 @@
 export const environment = {
   production: false,
   USER_API_URL: "http://localhost:8081/user",
-
+  NOTE_API_URL: "http://localhost:8081/notes",
+  // user api urls
   REGISTRATION_URL: "/registration",
   LOGIN_URL: "/login",
   ACTIVATE_ACCOUNT_URL: "/verification",
   FORGOT_PASSWORD_URL: "/forgot-password",
-  UPDATE_PASSWORD_URL: "/update-password"
+  UPDATE_PASSWORD_URL: "/update-password",
+  //note api urls
+  CREATE_NOTE_URL: "/create"
 };
 
 /*

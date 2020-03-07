@@ -1,7 +1,6 @@
 import { environment } from "src/environments/environment";
 import { UserService } from "src/app/services/user.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { LoginUser } from "./../../../models/login-user";
 import { Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MatSnackBar } from "@angular/material";

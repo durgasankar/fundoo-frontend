@@ -31,12 +31,13 @@
 
 <div class="card-list-view">
   <mat-card class="list-view-mat-card" *ngIf="card">
-    <form>
+    <form [formGroup]="createNoteForm">
       <div>
         <textarea
           matInput
           placeholder="Title"
           class="input"
+          formControlName="title"
           matTextareaAutosize
         ></textarea>
       </div>
@@ -46,6 +47,7 @@
           placeholder="Take a note..."
           class="input"
           matTextareaAutosize
+          formControlName="description"
           style="font-size: 12px;"
         ></textarea>
       </div>
@@ -131,6 +133,7 @@
           class="nav-button"
           (click)="cardSwap()"
           style="margin-left: 20%;"
+          (click)="createNote()"
         >
           Close
         </button>
