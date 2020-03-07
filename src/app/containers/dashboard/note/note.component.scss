@@ -1,0 +1,50 @@
+.mat1 {
+  background-color: red;
+  height: 10px;
+}
+
+.mat2 {
+  background-color: blue;
+  min-height: 80px;
+}
+
+.border {
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px 1px #cec9c9;
+  height: 20px;
+  width: 50%;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  width: 80%;
+  font-size: 16px;
+  background-color: transparent;
+  border: 0px solid;
+  min-height: 8px;
+  outline: none;
+}
+
+.list-view-mat-card {
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px 1px #cec9c9;
+  width: 40%;
+  top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-button {
+  width: 20px;
+  padding: 0px 0px;
+}
+mat-icon {
+  opacity: 0.75;
+}

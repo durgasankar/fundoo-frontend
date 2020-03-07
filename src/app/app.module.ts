@@ -48,6 +48,7 @@ import { ForgotPasswordComponent } from "./containers/user-authentication/forgot
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
 import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
+import { NoteComponent } from './containers/dashboard/note/note.component';
 const MaterialComponents = [
   BrowserModule,
   BrowserAnimationsModule,
@@ -93,7 +94,8 @@ const MaterialComponents = [
     ForgotPasswordComponent,
     DashboardComponent,
     AccoutActivationComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
