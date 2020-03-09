@@ -13,7 +13,8 @@ export const environment = {
   FORGOT_PASSWORD_URL: "/forgot-password",
   UPDATE_PASSWORD_URL: "/update-password",
   //note api urls
-  CREATE_NOTE_URL: "/create"
+  CREATE_NOTE_URL: "/create",
+  GET_ALL_NOTES_URL: "/fetch/notes"
 };
 
 /*

@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
           this.showSpinner = false;
         } else {
           console.log("un authenticated : ", errors.error);
-          this.matSnackBar.open(errors.error.message, "ok", {
+          this.matSnackBar.open("Opps...Internal Server Error!", "ok", {
             duration: 5000
           });
           this.router.navigateByUrl(`${environment.LOGIN_URL}`);

@@ -10,6 +10,9 @@ import { HttpHeaders } from "@angular/common/http";
 export class NoteService {
   private createNoteUrl: string = `${environment.NOTE_API_URL +
     environment.CREATE_NOTE_URL}`;
+
+  private getAllNotesUrl: string = `${environment.NOTE_API_URL +
+    environment.GET_ALL_NOTES_URL}`;
   constructor(private _httpService: HttpService) {}
 
   // fetching token from local storage stored during login
@@ -32,5 +35,8 @@ export class NoteService {
       note,
       this.httpOptions
     );
+  }
+  public getAllNotes() {
+    return this._httpService.getMethod(this.getAllNotesUrl, this.httpOptions);
   }
 }

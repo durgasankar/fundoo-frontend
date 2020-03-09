@@ -48,7 +48,7 @@ export class NoteComponent implements OnInit {
             duration: 4000
           });
           // reset data after creating note to default
-          this.createNoteForm.reset("");
+          this.createNoteForm.reset();
         },
         errors => {
           console.log("errors : ", errors);
@@ -72,7 +72,7 @@ export class NoteComponent implements OnInit {
             });
           }
           console.log("to reset: ", this.createNoteForm.controls.title);
-          this.createNoteForm.reset("");
+          this.createNoteForm.reset();
         }
       );
     }

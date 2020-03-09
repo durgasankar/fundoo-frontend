@@ -136,7 +136,12 @@
         <mat-divider></mat-divider>
 
         <mat-sidenav-container style="height:100vh;">
-          <mat-sidenav #sidenav style="width: 240px;" mode="side">
+          <mat-sidenav
+            #sidenav
+            style="width: 240px;"
+            mode="side"
+            [opened]="true"
+          >
             <mat-nav-list>
               <div class="menu-container">
                 <div
@@ -211,8 +216,7 @@
                 <p style="font-size: 20px; color: white">Loading...</p>
               </ngx-spinner>
             </div>
-            <!-- create note selector  -->
-            <app-note></app-note>
+            <router-outlet></router-outlet>
           </mat-sidenav-content>
         </mat-sidenav-container>
       </div>

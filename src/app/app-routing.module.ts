@@ -7,6 +7,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { RegistrationComponent } from "./containers/user-authentication/registration/registration.component";
 import { PageNotFoundComponent } from "./containers/page-not-found/page-not-found.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
+import { NoteComponent } from "./containers/dashboard/note/note.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -15,7 +16,14 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "update-password/:token", component: UpdatePasswordComponent },
-  { path: "dashboard", component: DashboardComponent },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    children: [
+      { path: "", redirectTo: "/dashboard/notes", pathMatch: "full" },
+      { path: "notes", component: NoteComponent }
+    ]
+  },
   { path: "**", component: PageNotFoundComponent }
 ];
 
