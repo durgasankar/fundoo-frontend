@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 import { FormBuilder } from "@angular/forms";
@@ -17,5 +17,17 @@ export class DisplayNotesComponent implements OnInit {
     private _noteService: NoteService
   ) {}
 
-  ngOnInit() {}
+  private expand: any = false;
+  notes: [];
+
+  ngOnInit() {
+    this.getAllNotes();
+  }
+
+  getAllNotes() {
+    this._noteService.getAllNotes().subscribe((response: any) => {
+      console.log("response", response);
+      this.notes = response.obj;
+    });
+  }
 }

@@ -1,0 +1,40 @@
+.textarea {
+  border: 0px;
+  outline: 0px;
+  background-color: none;
+}
+
+.noteTitle {
+  margin-top: none;
+  border: none;
+  outline: none;
+  width: 500px;
+  height: auto;
+  padding-left: 18px;
+  padding-right: 0px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  display: flex;
+}
+.noteCard {
+  align-items: center;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  float: left;
+  padding-left: 3px;
+  margin-bottom: 23px;
+}
+
+.matCardFooter {
+  margin-top: 0px;
+}
+.content,
+.textArea {
+  border: none;
+
+  margin-bottom: 0px;
+  background-color: #fff;
+  border-color: #e0e0e0;
+}
