@@ -1,8 +1,10 @@
+import { NoteService } from "src/app/services/note.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MatSnackBar } from "@angular/material";
+import { refresh } from "src/app/utility/util";
 
 @Component({
   selector: "app-dashboard",
@@ -14,21 +16,20 @@ export class DashboardComponent implements OnInit {
   // static profile picture
   profilePicUser: any = "../assets/durgasankar.jpg";
   constructor(
+    private _noteService: NoteService,
     private router: Router,
     private spinner: NgxSpinnerService,
     private matSnackBar: MatSnackBar
   ) {}
   grid: boolean = true;
-  localstorage_image: any;
   imageurl: string;
   firstName: string = localStorage.getItem("firstName");
   ngOnInit() {}
   onClickView() {
     return this.grid === true ? (this.grid = false) : (this.grid = true);
   }
-  refresh() {
-    console.log("reloading page");
-    window.location.reload();
+  refreshButton() {
+    refresh();
   }
   signOut() {
     console.log("signing out => clearing token");

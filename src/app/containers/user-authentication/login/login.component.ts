@@ -5,6 +5,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
+import { refresh } from "src/app/utility/util";
 
 @Component({
   selector: "app-login",
@@ -69,7 +70,6 @@ export class LoginComponent implements OnInit {
             duration: 5000
           });
           this.router.navigateByUrl("/login");
-          this.showSpinner = false;
         } else if (errors.error.statusCode === 404) {
           console.log("not found user : ", errors.error.message);
           this.matSnackBar.open(
@@ -80,15 +80,24 @@ export class LoginComponent implements OnInit {
             }
           );
           this.router.navigateByUrl(`${environment.REGISTRATION_URL}`);
-          this.showSpinner = false;
+        } else if (errors.error.statusCode === 400) {
+          console.log("invalid credentials : ", errors.error.message);
+          this.matSnackBar.open(
+            errors.error.message + ", Please register.",
+            "Opps!",
+            {
+              duration: 4000
+            }
+          );
+          this.router.navigateByUrl(`${environment.LOGIN_URL}`);
         } else {
           console.log("un authenticated : ", errors.error);
           this.matSnackBar.open("Opps...Internal Server Error!", "ok", {
             duration: 5000
           });
           this.router.navigateByUrl(`${environment.LOGIN_URL}`);
-          this.showSpinner = false;
         }
+        this.showSpinner = false;
       }
     );
   }

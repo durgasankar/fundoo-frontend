@@ -24,6 +24,7 @@ export class DisplayNotesComponent implements OnInit {
     this._noteService.autoRefesh.subscribe(() => {
       this.getAllNotes();
     });
+    // bedefault it will load data
     this.getAllNotes();
   }
 
