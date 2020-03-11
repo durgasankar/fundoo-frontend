@@ -1,4 +1,14 @@
 export class Note {
-  public title: string;
-  public description: string;
+  public noteId: number;
+  public title: String;
+  public description: String;
+  public isTrashed: boolean;
+  public isPined: boolean;
+  public isArchived: boolean;
+  public color: String;
+  public reminder: String;
+  public remainderDate: string;
+  public createdDate: String;
+  public updatedDate: string;
+  public userId: number;
 }

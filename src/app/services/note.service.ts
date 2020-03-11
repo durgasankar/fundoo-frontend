@@ -45,7 +45,7 @@ export class NoteService {
       .postMethod(this.createNoteUrl, note, this.httpOptions)
       .pipe(
         tap(() => {
-          this._subject.next;
+          this._subject.next();
         })
       );
   }

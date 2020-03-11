@@ -21,6 +21,9 @@ export class DisplayNotesComponent implements OnInit {
   notes: [];
 
   ngOnInit() {
+    this._noteService.autoRefesh.subscribe(() => {
+      this.getAllNotes();
+    });
     this.getAllNotes();
   }
 
