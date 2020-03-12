@@ -54,6 +54,7 @@ import { ArchievedNotesComponent } from "./containers/dashboard/archieved-notes/
 import { RemainderNotesComponent } from "./containers/dashboard/remainder-notes/remainder-notes.component";
 import { TrashedNotesComponent } from "./containers/dashboard/trashed-notes/trashed-notes.component";
 import { PinnedNotesComponent } from './containers/dashboard/pinned-notes/pinned-notes.component';
+import { SimpleNoteComponent } from './containers/dashboard/simple-note/simple-note.component';
 const MaterialComponents = [
   BrowserModule,
   BrowserAnimationsModule,
@@ -105,7 +106,8 @@ const MaterialComponents = [
     ArchievedNotesComponent,
     RemainderNotesComponent,
     TrashedNotesComponent,
-    PinnedNotesComponent
+    PinnedNotesComponent,
+    SimpleNoteComponent
   ],
   imports: [
     BrowserModule,

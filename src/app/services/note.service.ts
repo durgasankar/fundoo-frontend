@@ -15,6 +15,9 @@ export class NoteService {
 
   private getAllNotesUrl: string = `${environment.NOTE_API_URL +
     environment.GET_ALL_NOTES_URL}`;
+
+  private getAllRemainderNotesUrl: string = `${environment.NOTE_API_URL +
+    environment.GET_ALL_REMAINDER_NOTES_URL}`;
   constructor(private _httpService: HttpService) {}
 
   private _notesList = new Subject<any>();
@@ -50,6 +53,17 @@ export class NoteService {
       );
   }
   public getAllNotes() {
+    console.log("service reached");
+
     return this._httpService.getMethod(this.getAllNotesUrl, this.httpOptions);
+  }
+
+  public getAllRemainderNotes() {
+    console.log("service reached");
+
+    return this._httpService.getMethod(
+      this.getAllRemainderNotesUrl,
+      this.httpOptions
+    );
   }
 }

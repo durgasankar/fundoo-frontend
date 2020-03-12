@@ -1,0 +1,58 @@
+<mat-card
+  class="matcard"
+  style="margin-left:90px"
+  autocomplete="off"
+  role="combobox"
+  flex="column"
+>
+  <div>
+    <mat-card-title class="content">
+      <textarea
+        class="textArea"
+        cdkTextareaAutosize
+        placeholder="Title"
+        disabled
+        style="font-size: 16px;"
+        >{{ note.title }}</textarea
+      >
+    </mat-card-title>
+    <mat-card-content class="content">
+      <textarea
+        class="textArea"
+        cdkTextareaAutosize
+        placeholder="Description"
+        disabled
+        style="font-size: 12px;"
+        >{{ note.description }}</textarea
+      >
+    </mat-card-content>
+  </div>
+  <div class="matCardFooter">
+    <mat-card-footer>
+      <button mat-icon-button>
+        <mat-icon>add_alert</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>person_add</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>palette</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>crop_original</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>archive</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          Delete Note
+        </button>
+        <button mat-menu-item>Add label</button>
+      </mat-menu>
+    </mat-card-footer>
+  </div>
+</mat-card>
