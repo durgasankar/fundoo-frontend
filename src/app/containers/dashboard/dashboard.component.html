@@ -154,14 +154,23 @@
                   fxLayoutAlign="space-around start"
                 >
                   <div>
-                    <button mat-button id="sidenav-button">
+                    <button
+                      mat-button
+                      id="sidenav-button"
+                      [routerLink]="['/dashboard/notes']"
+                      (click)="displayAllNotes()"
+                    >
                       <mat-icon id="sidenav-icon">lightbulb_outline</mat-icon>
                       Notes
                     </button>
                   </div>
                   <!-- logo -->
                   <div>
-                    <button mat-button id="sidenav-button">
+                    <button
+                      mat-button
+                      id="sidenav-button"
+                      [routerLink]="['/dashboard/remainders']"
+                    >
                       <mat-icon id="sidenav-icon">notifications_none</mat-icon
                       >Reminders
                     </button>
@@ -194,13 +203,21 @@
                   fxLayoutAlign="space-around start"
                 >
                   <div>
-                    <button mat-button id="sidenav-button">
+                    <button
+                      mat-button
+                      id="sidenav-button"
+                      [routerLink]="['/dashboard/archieve']"
+                    >
                       <mat-icon id="sidenav-icon">archive</mat-icon>
                       Archive
                     </button>
                   </div>
                   <div>
-                    <button mat-button id="sidenav-button">
+                    <button
+                      mat-button
+                      id="sidenav-button"
+                      [routerLink]="['/dashboard/trash']"
+                    >
                       <mat-icon id="sidenav-icon">delete</mat-icon>Trash
                     </button>
                   </div>
@@ -220,6 +237,7 @@
                 <p style="font-size: 20px; color: white">Loading...</p>
               </ngx-spinner>
             </div>
+            <!-- notes -->
             <router-outlet></router-outlet>
           </mat-sidenav-content>
         </mat-sidenav-container>

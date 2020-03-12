@@ -48,8 +48,12 @@ import { ForgotPasswordComponent } from "./containers/user-authentication/forgot
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
 import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
-import { NoteComponent } from './containers/dashboard/note/note.component';
-import { DisplayNotesComponent } from './containers/dashboard/display-notes/display-notes.component';
+import { NoteComponent } from "./containers/dashboard/note/note.component";
+import { DisplayNotesComponent } from "./containers/dashboard/display-notes/display-notes.component";
+import { ArchievedNotesComponent } from "./containers/dashboard/archieved-notes/archieved-notes.component";
+import { RemainderNotesComponent } from "./containers/dashboard/remainder-notes/remainder-notes.component";
+import { TrashedNotesComponent } from "./containers/dashboard/trashed-notes/trashed-notes.component";
+import { PinnedNotesComponent } from './containers/dashboard/pinned-notes/pinned-notes.component';
 const MaterialComponents = [
   BrowserModule,
   BrowserAnimationsModule,
@@ -97,7 +101,11 @@ const MaterialComponents = [
     AccoutActivationComponent,
     UpdatePasswordComponent,
     NoteComponent,
-    DisplayNotesComponent
+    DisplayNotesComponent,
+    ArchievedNotesComponent,
+    RemainderNotesComponent,
+    TrashedNotesComponent,
+    PinnedNotesComponent
   ],
   imports: [
     BrowserModule,

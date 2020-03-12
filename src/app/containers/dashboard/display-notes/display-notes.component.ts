@@ -1,3 +1,4 @@
+import { Note } from "./../../../models/Note";
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
@@ -18,7 +19,7 @@ export class DisplayNotesComponent implements OnInit {
   ) {}
 
   private expand: any = false;
-  notes: [];
+  notes: Note[];
 
   ngOnInit() {
     this._noteService.autoRefesh.subscribe(() => {

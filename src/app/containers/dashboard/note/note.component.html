@@ -1,146 +1,157 @@
-<div class="close-note-container">
-  <mat-card *ngIf="!card" class="border">
-    <input placeholder="Take a note..." class="input" (click)="cardSwap()" />
-    <div style="padding: 0px 0px">
-      <button mat-icon-button class="nav-button" matTooltip="New list">
-        <mat-icon>check_box</mat-icon>
-      </button>
-    </div>
-    <div>
-      <button
-        mat-icon-button
-        class="nav-button"
-        fxHide.xs="true"
-        matTooltip="New note with drawing"
-      >
-        <mat-icon>brush</mat-icon>
-      </button>
-    </div>
-    <div>
-      <button
-        mat-icon-button
-        class="nav-button"
-        matTooltip="New note with Image"
-        fxHide.xs="true"
-      >
-        <mat-icon>image</mat-icon>
-      </button>
-    </div>
-  </mat-card>
-</div>
-
-<div class="card-list-view">
-  <mat-card class="list-view-mat-card" *ngIf="card">
-    <form [formGroup]="createNoteForm">
-      <div>
-        <textarea
-          matInput
-          placeholder="Title"
-          class="input"
-          formControlName="title"
-          matTextareaAutosize
-        ></textarea>
+<div class="whole-container">
+  <!-- take a note option while closed -->
+  <div class="close-note-container">
+    <mat-card *ngIf="!card" class="border">
+      <input placeholder="Take a note..." class="input" (click)="cardSwap()" />
+      <div style="padding: 0px 0px">
+        <button mat-icon-button class="nav-button" matTooltip="New list">
+          <mat-icon>check_box</mat-icon>
+        </button>
       </div>
       <div>
-        <textarea
-          matInput
-          placeholder="Take a note..."
-          class="input"
-          matTextareaAutosize
-          formControlName="description"
-          style="font-size: 12px;"
-        ></textarea>
-      </div>
-      <div class="icon-container">
         <button
-          margin="14px"
           mat-icon-button
-          fxHide.xs="true"
-          matTooltip="Remind me"
-        >
-          <mat-icon>notifications_paused</mat-icon>
-        </button>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          matTooltip="Collaborator"
-        >
-          <mat-icon>person_add</mat-icon>
-        </button>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          matTooltip="Change color"
-        >
-          <mat-icon>color_lens</mat-icon>
-        </button>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          matTooltip="Add Image"
-        >
-          <mat-icon>crop_original</mat-icon>
-        </button>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          matTooltip="archive"
-        >
-          <mat-icon>archive</mat-icon>
-        </button>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          [matMenuTriggerFor]="menu"
-          matTooltip="more"
-        >
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu" class="menuclass">
-          <mat-list-item>
-            <button mat-button>Add label</button>
-          </mat-list-item>
-          <mat-list-item>
-            <button mat-button>Add drawing</button>
-          </mat-list-item>
-          <mat-list-item>
-            <button mat-button>Show checkboxes</button>
-          </mat-list-item>
-        </mat-menu>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          matTooltip="Undo"
-        >
-          <mat-icon>undo</mat-icon>
-        </button>
-        <button
-          margin="14px"
-          mat-icon-button
-          fxHide.xs="true"
-          matTooltip="Redo"
-        >
-          <mat-icon>redo</mat-icon>
-        </button>
-        <button
-          mat-button
           class="nav-button"
-          (click)="cardSwap()"
-          style="margin-left: 14%;"
-          (click)="createNote()"
+          fxHide.xs="true"
+          matTooltip="New note with drawing"
         >
-          Close
+          <mat-icon>brush</mat-icon>
         </button>
       </div>
-    </form>
-  </mat-card>
-</div>
-<div style="padding-top: 35px;">
-  <app-display-notes></app-display-notes>
+      <div>
+        <button
+          mat-icon-button
+          class="nav-button"
+          matTooltip="New note with Image"
+          fxHide.xs="true"
+        >
+          <mat-icon>image</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  <!-- take a note option while open -->
+  <div class="card-list-view">
+    <mat-card class="list-view-mat-card" *ngIf="card">
+      <form [formGroup]="createNoteForm">
+        <div>
+          <textarea
+            matInput
+            placeholder="Title"
+            class="input"
+            formControlName="title"
+            matTextareaAutosize
+          ></textarea>
+        </div>
+        <div>
+          <textarea
+            matInput
+            placeholder="Take a note..."
+            class="input"
+            matTextareaAutosize
+            formControlName="description"
+            style="font-size: 12px;"
+          ></textarea>
+        </div>
+        <div class="icon-container">
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="Remind me"
+          >
+            <mat-icon>notifications_paused</mat-icon>
+          </button>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="Collaborator"
+          >
+            <mat-icon>person_add</mat-icon>
+          </button>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="Change color"
+          >
+            <mat-icon>color_lens</mat-icon>
+          </button>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="Add Image"
+          >
+            <mat-icon>crop_original</mat-icon>
+          </button>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="archive"
+          >
+            <mat-icon>archive</mat-icon>
+          </button>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            [matMenuTriggerFor]="menu"
+            matTooltip="more"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" class="menuclass">
+            <mat-list-item>
+              <button mat-button>Add label</button>
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-button>Add drawing</button>
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-button>Show checkboxes</button>
+            </mat-list-item>
+          </mat-menu>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="Undo"
+          >
+            <mat-icon>undo</mat-icon>
+          </button>
+          <button
+            margin="14px"
+            mat-icon-button
+            fxHide.xs="true"
+            matTooltip="Redo"
+          >
+            <mat-icon>redo</mat-icon>
+          </button>
+          <button
+            mat-button
+            class="nav-button"
+            (click)="cardSwap()"
+            style="margin-left: 12%;"
+            (click)="createNote()"
+          >
+            Close
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+  <!-- display notes -->
+  <div style="padding-top: 35px;">
+    <span class="mat-body-2"> Pinned</span>
+    <div class="pinned-notes">
+      <app-pinned-notes></app-pinned-notes>
+    </div>
+    <span class="mat-body-2"> Others</span>
+    <div class="display-all-notes">
+      <app-display-notes></app-display-notes>
+    </div>
+  </div>
 </div>

@@ -42,4 +42,8 @@ export class DashboardComponent implements OnInit {
     this.showSpinner = false;
     localStorage.clear();
   }
+  displayAllNotes() {
+    console.log("getting all notes : ");
+    this._noteService.getAllNotes();
+  }
 }

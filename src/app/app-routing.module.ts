@@ -1,3 +1,5 @@
+import { TrashedNotesComponent } from "./containers/dashboard/trashed-notes/trashed-notes.component";
+import { ArchievedNotesComponent } from "./containers/dashboard/archieved-notes/archieved-notes.component";
 import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { ForgotPasswordComponent } from "./containers/user-authentication/forgot-password/forgot-password.component";
@@ -8,6 +10,7 @@ import { RegistrationComponent } from "./containers/user-authentication/registra
 import { PageNotFoundComponent } from "./containers/page-not-found/page-not-found.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
 import { NoteComponent } from "./containers/dashboard/note/note.component";
+import { RemainderNotesComponent } from "./containers/dashboard/remainder-notes/remainder-notes.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -21,7 +24,10 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: "", redirectTo: "/dashboard/notes", pathMatch: "full" },
-      { path: "notes", component: NoteComponent }
+      { path: "notes", component: NoteComponent },
+      { path: "remainders", component: RemainderNotesComponent },
+      { path: "archieve", component: ArchievedNotesComponent },
+      { path: "trash", component: TrashedNotesComponent }
     ]
   },
   { path: "**", component: PageNotFoundComponent }
