@@ -16,7 +16,8 @@ export const environment = {
   CREATE_NOTE_URL: "/create",
   GET_ALL_NOTES_URL: "/fetch/notes",
   GET_ALL_REMAINDER_NOTES_URL: "/fetch/notes/remainders",
-  GET_ALL_ARCHIVED_NOTES_URL: "/fetch/notes/archived"
+  GET_ALL_ARCHIVED_NOTES_URL: "/fetch/notes/archived",
+  GET_ALL_TRASHED_NOTES_URL: "/fetch/notes/trashed"
 };
 
 /*

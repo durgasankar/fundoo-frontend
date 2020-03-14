@@ -1,9 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Note } from "src/app/models/Note";
 import { NoteService } from "src/app/services/note.service";
-import { FormBuilder } from "@angular/forms";
-import { MatSnackBar } from "@angular/material";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-archieved-notes",
@@ -11,12 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./archieved-notes.component.scss"]
 })
 export class ArchievedNotesComponent implements OnInit {
-  constructor(
-    private _router: Router,
-    private _snackBar: MatSnackBar,
-    private _formBuilder: FormBuilder,
-    private _noteService: NoteService
-  ) {}
+  constructor(private _noteService: NoteService) {}
   archivedNotes: Note[];
   isEmptyArchivedNotesList: boolean;
 

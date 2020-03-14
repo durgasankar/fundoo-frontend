@@ -21,6 +21,10 @@ export class NoteService {
 
   private getAllArchivedNotesUrl: string = `${environment.NOTE_API_URL +
     environment.GET_ALL_ARCHIVED_NOTES_URL}`;
+
+  private getAllTrashedNotesUrl: string = `${environment.NOTE_API_URL +
+    environment.GET_ALL_TRASHED_NOTES_URL}`;
+
   constructor(private _httpService: HttpService) {}
 
   private _notesList = new Subject<any>();
@@ -73,6 +77,14 @@ export class NoteService {
     console.log("archived Service Reached");
     return this._httpService.getMethod(
       this.getAllArchivedNotesUrl,
+      this.httpOptions
+    );
+  }
+
+  public getAllTrashedNotes() {
+    console.log("archived Service Reached");
+    return this._httpService.getMethod(
+      this.getAllTrashedNotesUrl,
       this.httpOptions
     );
   }

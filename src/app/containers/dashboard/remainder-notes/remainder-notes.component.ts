@@ -1,7 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material";
-import { FormBuilder } from "@angular/forms";
 import { NoteService } from "src/app/services/note.service";
 import { Note } from "src/app/models/Note";
 
@@ -11,12 +8,7 @@ import { Note } from "src/app/models/Note";
   styleUrls: ["./remainder-notes.component.scss"]
 })
 export class RemainderNotesComponent implements OnInit {
-  constructor(
-    private _router: Router,
-    private _snackBar: MatSnackBar,
-    private _formBuilder: FormBuilder,
-    private _noteService: NoteService
-  ) {}
+  constructor(private _noteService: NoteService) {}
   remainderNotes: Note[];
   isEmptyRemainderNotesList: boolean;
 
