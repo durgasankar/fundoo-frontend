@@ -1,0 +1,7 @@
+<div *ngFor="let note of archivedNotes" class="noteCard">
+  <app-simple-note [note]="note"></app-simple-note>
+</div>
+<div class="empty-notes" *ngIf="isEmptyArchivedNotesList" align="center">
+  <mat-icon>archive</mat-icon>
+  <div class="mat-headline">No notes archived</div>
+</div>
