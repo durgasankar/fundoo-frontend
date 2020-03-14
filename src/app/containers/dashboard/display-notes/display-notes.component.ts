@@ -20,6 +20,7 @@ export class DisplayNotesComponent implements OnInit {
 
   private expand: any = false;
   notes: Note[];
+  isEmptyNotesList: boolean;
 
   ngOnInit() {
     this._noteService.autoRefesh.subscribe(() => {
@@ -30,9 +31,16 @@ export class DisplayNotesComponent implements OnInit {
   }
 
   getAllNotes() {
-    this._noteService.getAllNotes().subscribe((response: any) => {
-      console.log("response", response);
-      this.notes = response.obj;
-    });
+    this._noteService.getAllNotes().subscribe(
+      (response: any) => {
+        console.log("response", response);
+        this.notes = response.obj;
+        this.isEmptyNotesList = false;
+      },
+      errors => {
+        console.log("empty list : ", errors);
+        this.isEmptyNotesList = true;
+      }
+    );
   }
 }
