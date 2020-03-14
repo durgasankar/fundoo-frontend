@@ -18,19 +18,26 @@ export class RemainderNotesComponent implements OnInit {
     private _noteService: NoteService
   ) {}
   remainderNotes: Note[];
+  isEmptyRemainderNotesList: boolean;
 
   ngOnInit() {
     this._noteService.autoRefesh.subscribe(() => {
       this.getAllRemainderNotes();
     });
-    // bedefault it will load all remainder notes
+    // by default it will load all remainder notes
     this.getAllRemainderNotes();
   }
 
   getAllRemainderNotes() {
-    this._noteService.getAllRemainderNotes().subscribe((response: any) => {
-      console.log("response", response);
-      this.remainderNotes = response.obj;
-    });
+    this._noteService.getAllRemainderNotes().subscribe(
+      (response: any) => {
+        console.log("response", response);
+        this.remainderNotes = response.obj;
+        this.isEmptyRemainderNotesList = false;
+      },
+      errors => {
+        this.isEmptyRemainderNotesList = true;
+      }
+    );
   }
 }

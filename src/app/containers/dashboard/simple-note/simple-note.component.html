@@ -27,16 +27,23 @@
       >
     </mat-card-content>
     <!-- This block will be display if remainder is not empty -->
-    <mat-card-content class="content" *ngIf="note.remainderDate != null">
-      <textarea
-        class="textArea"
-        cdkTextareaAutosize
-        placeholder="remainder"
-        disabled
-        style="font-size: 12px;"
-        >{{ note.remainderDate }}</textarea
-      >
-    </mat-card-content>
+
+    <div *ngIf="note.remainderDate != null">
+      <mat-card-content class="content">
+        <textarea
+          class="textArea"
+          cdkTextareaAutosize
+          placeholder="remainder"
+          disabled
+          style="font-size: 12px;
+          padding-top: 25px;"
+          >{{ note.remainderDate }}</textarea
+        >
+        <button mat-icon-button disableRipple style="transform: scale(0.9);">
+          <mat-icon style=" padding-bottom: 10px;">highlight_off</mat-icon>
+        </button>
+      </mat-card-content>
+    </div>
   </div>
   <div class="matCardFooter">
     <mat-card-footer>

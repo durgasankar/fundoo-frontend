@@ -1,3 +1,7 @@
 <div *ngFor="let note of remainderNotes" class="noteCard">
   <app-simple-note [note]="note"></app-simple-note>
 </div>
+<div class="empty-notes" *ngIf="isEmptyRemainderNotesList" align="center">
+  <mat-icon>notifications_none</mat-icon>
+  <div class="mat-headline">Notes with upcoming remainders appears here</div>
+</div>
