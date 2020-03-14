@@ -9,5 +9,6 @@ import { Component, OnInit, Input } from "@angular/core";
 export class SimpleNoteComponent implements OnInit {
   constructor() {}
   @Input() note: Note;
+
   ngOnInit() {}
 }
