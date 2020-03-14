@@ -1,6 +1,6 @@
 <mat-card
   class="matcard"
-  style="margin-left:90px"
+  style="margin-left:80px"
   autocomplete="off"
   role="combobox"
   flex="column"
@@ -24,6 +24,17 @@
         disabled
         style="font-size: 12px;"
         >{{ note.description }}</textarea
+      >
+    </mat-card-content>
+    <!-- This block will be display if remainder is not empty -->
+    <mat-card-content class="content" *ngIf="note.remainderDate != null">
+      <textarea
+        class="textArea"
+        cdkTextareaAutosize
+        placeholder="remainder"
+        disabled
+        style="font-size: 12px;"
+        >{{ note.remainderDate }}</textarea
       >
     </mat-card-content>
   </div>
