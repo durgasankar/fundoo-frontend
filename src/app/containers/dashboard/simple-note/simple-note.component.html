@@ -1,10 +1,4 @@
-<mat-card
-  class="matcard"
-  style="margin-left:80px"
-  autocomplete="off"
-  role="combobox"
-  flex="column"
->
+<mat-card autocomplete="off" role="combobox" flex="column">
   <div>
     <mat-card-title class="content">
       <textarea
@@ -45,35 +39,11 @@
       </mat-card-content>
     </div>
   </div>
-  <div class="matCardFooter" *ngIf="!note.trashed; else trashedNoteContent">
-    <mat-card-footer fxLayout="row" fxLayoutAlign="space-between end">
-      <button mat-icon-button matTooltip="Remind me">
-        <mat-icon>add_alert</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon matTooltip="Collaborator">person_add</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Change color">
-        <mat-icon>palette</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Add Image">
-        <mat-icon>crop_original</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Archive">
-        <mat-icon>archive</mat-icon>
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          Delete Note
-        </button>
-        <button mat-menu-item>Add label</button>
-      </mat-menu>
-    </mat-card-footer>
+  <!-- removed all the icons to the separate component so that this can be reused for update note -->
+  <div *ngIf="!note.trashed; else trashedNoteContent">
+    <app-icon-list></app-icon-list>
   </div>
-
+  <!-- icon list -->
   <ng-template #trashedNoteContent>
     <div class="trashBoxDetail">
       <mat-card-footer>
