@@ -1,6 +1,6 @@
 <mat-card autocomplete="off" role="combobox" flex="column">
   <div>
-    <mat-card-title class="content">
+    <mat-card-title class="content" (click)="openDialog(note)">
       <textarea
         class="textArea"
         cdkTextareaAutosize
@@ -10,7 +10,7 @@
         >{{ note.title }}</textarea
       >
     </mat-card-title>
-    <mat-card-content class="content">
+    <mat-card-content class="content" (click)="openDialog(note)">
       <textarea
         class="textArea"
         cdkTextareaAutosize

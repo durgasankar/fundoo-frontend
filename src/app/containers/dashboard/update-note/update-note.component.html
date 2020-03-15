@@ -1,1 +1,33 @@
-<p>update-note works!</p>
+<mat-card mat-dialog-content fxLayout="column" fxFlex>
+  <mat-card-title>
+    <textarea
+      id="title"
+      [(ngModel)]="note.title"
+      matInput
+      matTextareaAutosize
+      type="text"
+      placeholder="Title"
+    ></textarea>
+  </mat-card-title>
+  <mat-card-content>
+    <textarea
+      matInput
+      type="text"
+      matTextareaAutosize
+      placeholder="Take a note"
+      [(ngModel)]="note.description"
+    ></textarea>
+  </mat-card-content>
+  <div class="lastEdit" *ngIf="note.updatedDate != null" align="end">
+    <span style="margin-top: 8px;"
+      ><small>Last Edit: {{ note.updatedDate }}</small></span
+    >
+  </div>
+  <div class="icon" mat-dialog-actions>
+    <!-- app icon selector -->
+    <app-icon-list class="app-note-list"></app-icon-list>
+    <button mat-button (click)="onSubmit() || (open = !open)">
+      Close
+    </button>
+  </div>
+</mat-card>

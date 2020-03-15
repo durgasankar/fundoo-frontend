@@ -62,6 +62,7 @@ export class NoteService {
         })
       );
   }
+  // get all notes
   public getAllNotes() {
     console.log(" all notes service reached");
 
@@ -98,5 +99,25 @@ export class NoteService {
       this.getAllPinnedNotesUrl,
       this.httpOptions
     );
+  }
+
+  public updateNote(note: Note, noteId: number) {
+    console.log(
+      "fetching token from header : ",
+      this.httpOptions,
+      "note for updation : ",
+      note
+    );
+    return this._httpService
+      .putMethod(
+        `${environment.NOTE_API_URL + environment.UPDATE_NOTE_URL}${noteId}`,
+        note,
+        this.httpOptions
+      )
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
   }
 }
