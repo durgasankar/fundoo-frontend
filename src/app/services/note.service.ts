@@ -25,6 +25,9 @@ export class NoteService {
   private getAllTrashedNotesUrl: string = `${environment.NOTE_API_URL +
     environment.GET_ALL_TRASHED_NOTES_URL}`;
 
+  private getAllPinnedNotesUrl: string = `${environment.NOTE_API_URL +
+    environment.GET_ALL_PINNED_NOTES_URL}`;
+
   constructor(private _httpService: HttpService) {}
 
   private _notesList = new Subject<any>();
@@ -85,6 +88,14 @@ export class NoteService {
     console.log("archived Service Reached");
     return this._httpService.getMethod(
       this.getAllTrashedNotesUrl,
+      this.httpOptions
+    );
+  }
+
+  public getAllPinnedNotes() {
+    console.log("archived Service Reached");
+    return this._httpService.getMethod(
+      this.getAllPinnedNotesUrl,
       this.httpOptions
     );
   }

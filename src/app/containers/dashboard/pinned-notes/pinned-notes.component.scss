@@ -1,0 +1,20 @@
+.noteCard {
+  align-items: center;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  float: left;
+  margin-bottom: 23px;
+}
+.empty-notes {
+  margin-top: 15%;
+}
+mat-icon {
+  transform: scale(5);
+  opacity: 0.25;
+}
+.mat-headline {
+  padding-top: 40px;
+  opacity: 0.5;
+}

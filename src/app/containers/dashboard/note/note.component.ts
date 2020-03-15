@@ -1,6 +1,6 @@
 import { NoteService } from "./../../../services/note.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
@@ -34,6 +34,7 @@ export class NoteComponent implements OnInit {
       // console.log("title : ", this.createNoteForm.controls.title);
       // console.log("direct form", this.createNoteForm);
       console.log("opps! no notes are added");
+
       return;
     } else {
       this._noteService.createNote(this.createNoteForm.value).subscribe(

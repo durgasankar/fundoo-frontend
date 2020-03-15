@@ -145,13 +145,19 @@
   </div>
   <!-- display notes -->
   <div style="padding-top: 35px;">
-    <span class="mat-body-2" style="padding-left: 5px;"> Pinned</span>
-    <div class="pinned-notes">
-      <app-pinned-notes></app-pinned-notes>
+    <div *ngIf="!isEmptyPinnedNotesList">
+      <span class="mat-body-2" style="padding-left: 5px;"> Pinned</span>
+      <div class="pinned-notes">
+        <app-pinned-notes></app-pinned-notes>
+      </div>
     </div>
-    <span class="mat-body-2" style="padding-left: 5px;"> Others</span>
     <div class="display-all-notes">
-      <app-display-notes></app-display-notes>
+      <div class="mat-body-2" style="padding-left: 5px;">
+        Others
+      </div>
+      <div class="display-all-notes">
+        <app-display-notes></app-display-notes>
+      </div>
     </div>
   </div>
 </div>
