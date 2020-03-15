@@ -16,19 +16,8 @@
   margin-top: 20px;
   display: flex;
 }
-// .noteCard {
-//   align-items: center;
-//   border: none;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: space-between;
-//   float: left;
-//   padding-left: 3px;
-//   margin-bottom: 23px;
-// }
-
 .matCardFooter {
-  margin-top: 0px;
+  margin: 0px;
 }
 .content,
 .textArea {
@@ -37,4 +26,7 @@
   margin-bottom: 0px;
   background-color: #fff;
   border-color: #e0e0e0;
+}
+textarea {
+  width: 100%;
 }

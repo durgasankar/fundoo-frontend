@@ -27,8 +27,9 @@ export class RemainderNotesComponent implements OnInit {
         this.remainderNotes = response.obj;
         this.isEmptyRemainderNotesList = false;
       },
-      errors => {
+      (errors: any) => {
         this.isEmptyRemainderNotesList = true;
+        console.log("errors note not found", errors);
       }
     );
   }

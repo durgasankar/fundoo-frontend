@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="matCardFooter" *ngIf="!note.trashed; else trashedNoteContent">
-    <mat-card-footer>
+    <mat-card-footer fxLayout="row" fxLayoutAlign="space-between end">
       <button mat-icon-button matTooltip="Remind me">
         <mat-icon>add_alert</mat-icon>
       </button>
