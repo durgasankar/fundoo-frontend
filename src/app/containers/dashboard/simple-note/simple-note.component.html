@@ -85,10 +85,14 @@
   <ng-template #trashedNoteContent>
     <div class="trashBoxDetail">
       <mat-card-footer>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="deleteForever()">
           <mat-icon matTooltip="Delete forever">delete_forever</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="Restore">
+        <button
+          mat-icon-button
+          matTooltip="Restore"
+          (click)="restoreFromTrash()"
+        >
           <mat-icon>restore_from_trash</mat-icon>
         </button>
       </mat-card-footer>

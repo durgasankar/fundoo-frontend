@@ -25,7 +25,7 @@
   </div>
   <div class="icon" mat-dialog-actions>
     <!-- app icon selector -->
-    <app-icon-list class="app-note-list"></app-icon-list>
+    <app-icon-list class="app-note-list" [note]="note"></app-icon-list>
     <button mat-button (click)="onSubmit() || (open = !open)">
       Close
     </button>
