@@ -23,13 +23,17 @@ export class ArchievedNotesComponent implements OnInit {
   getAllArchivedNotes() {
     this._noteService.getAllArchivedNotes().subscribe(
       (response: any) => {
-        console.log("response", response);
         this.archivedNotes = response.obj;
-        this.isEmptyArchivedNotesList = false;
+        if (this.archivedNotes.length === 0) {
+          console.log(response);
+          this.isEmptyArchivedNotesList = true;
+        } else {
+          console.log("response", response);
+          this.isEmptyArchivedNotesList = false;
+        }
       },
       errors => {
         console.log(errors);
-        this.isEmptyArchivedNotesList = true;
       }
     );
   }
