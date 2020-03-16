@@ -12,7 +12,7 @@ import { environment } from "src/environments/environment";
 })
 export class NoteComponent implements OnInit {
   createNoteForm: FormGroup;
-  card = false;
+  card: boolean = false;
   constructor(
     private _router: Router,
     private _snackBar: MatSnackBar,

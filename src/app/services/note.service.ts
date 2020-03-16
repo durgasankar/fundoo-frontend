@@ -142,4 +142,27 @@ export class NoteService {
         })
       );
   }
+
+  public archiveNote(noteId: number) {
+    console.log("service reached with id : " + noteId);
+    console.log(
+      `${environment.NOTE_API_URL}` +
+        "/" +
+        noteId +
+        `${environment.ARCHIVE_NOTE_URL}`
+    );
+    return this._httpService
+      .deleteMethod(
+        `${environment.NOTE_API_URL}` +
+          "/" +
+          noteId +
+          `${environment.ARCHIVE_NOTE_URL}`,
+        this.httpOptions
+      )
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
+  }
 }

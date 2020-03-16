@@ -21,7 +21,7 @@ export class IconListComponent implements OnInit {
   ngOnInit() {}
 
   deleteNote() {
-    console.log("note fetched", this.note);
+    console.log("note fetched for delete", this.note);
     this._noteService.deleteNote(this.note.noteId).subscribe(
       response => {
         console.log("response : ", response);
@@ -44,6 +44,35 @@ export class IconListComponent implements OnInit {
         } else {
           this._matSnackBar.open(errors.error.message, "ok", {
             duration: 5000
+          });
+        }
+      }
+    );
+  }
+  archive() {
+    console.log("note fetched for archive", this.note);
+    this._noteService.archiveNote(this.note.noteId).subscribe(
+      response => {
+        console.log("response : ", response);
+        this._matSnackBar.open(response.message + " sucessfully", "ok", {
+          duration: 4000
+        });
+      },
+      errors => {
+        console.log("errors : ", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
           });
         }
       }
