@@ -1,15 +1,41 @@
 <mat-card autocomplete="off" role="combobox" flex="column">
   <div>
-    <mat-card-title class="content" (click)="openDialog(note)">
-      <textarea
-        class="textArea"
-        cdkTextareaAutosize
-        placeholder="Title"
-        disabled
-        style="font-size: 18px; font-weight: bold;"
-        >{{ note.title }}</textarea
-      >
-    </mat-card-title>
+    <div
+      class="pin-unpin-title"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <mat-card-title class="content" (click)="openDialog(note)">
+        <textarea
+          class="textArea"
+          cdkTextareaAutosize
+          placeholder="Title"
+          disabled
+          id="note-title"
+          >{{ note.title }}</textarea
+        >
+      </mat-card-title>
+
+      <div class="pin-unpin-div">
+        <button mat-icon-button>
+          <img
+            id="pin"
+            src="assets/logo/unpin.svg"
+            *ngIf="!isPinned; else pinnedNote"
+            (click)="isPinned = !isPinned"
+          />
+        </button>
+        <ng-template #pinnedNote>
+          <button mat-icon-button>
+            <img
+              id="pin"
+              src="assets/logo/pinned.svg"
+              (click)="isPinned = !isPinned"
+            />
+          </button>
+        </ng-template>
+      </div>
+    </div>
     <mat-card-content class="content" (click)="openDialog(note)">
       <textarea
         class="textArea"
