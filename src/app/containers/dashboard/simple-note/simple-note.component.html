@@ -5,7 +5,10 @@
       fxLayout="row"
       fxLayoutAlign="space-between center"
     >
-      <mat-card-title class="content" (click)="openDialog(note)">
+      <mat-card-title
+        class="content"
+        (click)="!note.trashed && openDialog(note)"
+      >
         <textarea
           class="textArea"
           cdkTextareaAutosize
@@ -15,8 +18,8 @@
           >{{ note.title }}</textarea
         >
       </mat-card-title>
-
-      <div class="pin-unpin-div">
+      <!-- this div will come to operational if note is not trashed  -->
+      <div class="pin-unpin-div" *ngIf="!note.trashed">
         <button mat-icon-button>
           <img
             id="pin"
@@ -36,7 +39,10 @@
         </ng-template>
       </div>
     </div>
-    <mat-card-content class="content" (click)="openDialog(note)">
+    <mat-card-content
+      class="content"
+      (click)="!note.trashed && openDialog(note)"
+    >
       <textarea
         class="textArea"
         cdkTextareaAutosize
@@ -60,14 +66,15 @@
           >{{ note.remainderDate }}</textarea
         >
         <button mat-icon-button disableRipple style="transform: scale(0.9);">
-          <mat-icon style=" padding-bottom: 10px;">highlight_off</mat-icon>
+          <mat-icon style=" margin-bottom: 10px;">highlight_off</mat-icon>
         </button>
       </mat-card-content>
     </div>
   </div>
   <!-- removed all the icons to the separate component so that this can be reused for update note -->
   <div *ngIf="!note.trashed; else trashedNoteContent">
-    <app-icon-list></app-icon-list>
+    <!-- data received from father [display-notes] and then same data is being sent to the child -->
+    <app-icon-list [note]="note"></app-icon-list>
   </div>
   <!-- icon list -->
   <ng-template #trashedNoteContent>

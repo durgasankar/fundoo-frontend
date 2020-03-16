@@ -16,7 +16,11 @@ export class HttpService {
     return this._httpClient.get(url, options);
   }
 
-  public putMethod(url: any, body: any, options: any): Observable<any> {
+  public putMethod(url: string, body: any, options: any): Observable<any> {
     return this._httpClient.put(url, body, options);
+  }
+
+  public deleteMethod(url: string, options: any): Observable<any> {
+    return this._httpClient.delete(url, options);
   }
 }

@@ -20,7 +20,8 @@ export const environment = {
   GET_ALL_TRASHED_NOTES_URL: "/fetch/notes/trashed",
   GET_ALL_PINNED_NOTES_URL: "/fetch/notes/pinned",
   // update note
-  UPDATE_NOTE_URL: "/update?id="
+  UPDATE_NOTE_URL: "/update?id=",
+  DELETE_NOTE_URL: "/trash"
 };
 
 /*
