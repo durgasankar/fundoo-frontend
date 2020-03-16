@@ -54,9 +54,17 @@ export class IconListComponent implements OnInit {
     this._noteService.archiveNote(this.note.noteId).subscribe(
       response => {
         console.log("response : ", response);
-        this._matSnackBar.open(response.message + " sucessfully", "ok", {
-          duration: 4000
-        });
+        // archive
+        if (response.statusCode === 200) {
+          this._matSnackBar.open(response.message + " sucessfully", "ok", {
+            duration: 4000
+          });
+          // urarchive
+        } else {
+          this._matSnackBar.open(response.message + " sucessfully", "ok", {
+            duration: 4000
+          });
+        }
       },
       errors => {
         console.log("errors : ", errors);
