@@ -1,7 +1,6 @@
 .textarea {
   border: 0px;
   outline: 0px;
-  background-color: none;
 }
 
 .noteTitle {
@@ -19,13 +18,11 @@
 .textArea {
   border: none;
   margin-bottom: 0px;
-  background-color: #fff;
-  border-color: #e0e0e0;
 }
 textarea {
   width: 100%;
 }
-// widthy of a crad of note
+// width of a crad of note
 mat-card {
   width: 220px;
   margin-left: 80px;
@@ -38,4 +35,11 @@ mat-card {
   margin-top: -20px;
   margin-right: -10px;
   opacity: 0.75;
+}
+#note-description {
+  font-size: 12px;
+}
+#note-remainder {
+  font-size: 12px;
+  padding-top: 25px;
 }

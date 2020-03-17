@@ -235,4 +235,28 @@ export class NoteService {
         })
       );
   }
+
+  public changeColorOfNote(noteId: number, color: string) {
+    console.log("service reached with id : " + noteId);
+    console.log(
+      `${environment.NOTE_API_URL}` +
+        "/" +
+        noteId +
+        `${environment.CHANGE_COLOR_NOTE_URL}${color}`
+    );
+    return this._httpService
+      .patchMethod(
+        `${environment.NOTE_API_URL}` +
+          "/" +
+          noteId +
+          `${environment.CHANGE_COLOR_NOTE_URL}${color}`,
+        {},
+        this.httpOptions
+      )
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
+  }
 }

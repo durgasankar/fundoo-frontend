@@ -11,6 +11,26 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./icon-list.component.scss"]
 })
 export class IconListComponent implements OnInit {
+  arrayOfColors = [
+    [
+      { color: "#fff", name: "white" },
+      { color: "rgba(229, 84, 81,1)", name: "Red" },
+      { color: "rgba(249, 150, 107,1)", name: "Orange" },
+      { color: "rgba(233, 171, 23,1)", name: "Yellow" }
+    ],
+    [
+      { color: "rgba(137, 195, 92,1)", name: "Green" },
+      { color: "rgba(0, 128, 128,1)", name: "Teal" },
+      { color: "rgba(183, 206, 236,1)", name: "Blue" },
+      { color: "rgba(105, 96, 236,1)", name: "Dark blue" }
+    ],
+    [
+      { color: "rgba(145, 114, 236,0.7)", name: "Purple" },
+      { color: "rgba(230, 169, 236,1)", name: "Pink" },
+      { color: "rgba(194, 178, 128,1)", name: "Brown" },
+      { color: " rgba(229, 228, 226,1)", name: "Gray" }
+    ]
+  ];
   constructor(
     private _noteService: NoteService,
     private _matSnackBar: MatSnackBar,
@@ -19,6 +39,36 @@ export class IconListComponent implements OnInit {
   @Input() note: Note;
 
   ngOnInit() {}
+
+  changeColor(color) {
+    console.log("color --> ", color, this.note.noteId);
+    this._noteService.changeColorOfNote(this.note.noteId, color).subscribe(
+      response => {
+        console.log("response : ", response);
+        this._matSnackBar.open(response.message + " sucessfully", "ok", {
+          duration: 4000
+        });
+      },
+      errors => {
+        console.log("errors : ", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 5000
+          });
+        }
+      }
+    );
+  }
 
   deleteNote() {
     console.log("note fetched for delete", this.note);

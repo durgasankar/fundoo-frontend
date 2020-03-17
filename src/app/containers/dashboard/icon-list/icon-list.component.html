@@ -5,12 +5,40 @@
   <button mat-icon-button>
     <mat-icon matTooltip="Collaborator">person_add</mat-icon>
   </button>
-  <button mat-icon-button matTooltip="Change color">
+  <!-- changing color -->
+  <button
+    mat-icon-button
+    matTooltip="Change color"
+    [matMenuTriggerFor]="colorlist"
+  >
     <mat-icon>palette</mat-icon>
   </button>
+  <mat-menu #colorlist="matMenu" [overlapTrigger]="false">
+    <ng-template matMenuContent>
+      <div>
+        <div
+          fxLayout="row"
+          fxLayoutGap="10px"
+          style="margin-top: 1px"
+          *ngFor="let colors of arrayOfColors"
+        >
+          <div *ngFor="let color of colors">
+            <button
+              [ngStyle]="{ 'background-color': color.color }"
+              (click)="changeColor(color.color)"
+              matTooltip="{{ color.name }}"
+              mat-mini-fab
+            ></button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-menu>
+
   <button mat-icon-button matTooltip="Add Image">
     <mat-icon>crop_original</mat-icon>
   </button>
+  <!-- archive and unarchive -->
   <ng-container *ngIf="!note.archived; else unarchive">
     <button mat-icon-button matTooltip="Archive" (click)="archive()">
       <mat-icon>archive</mat-icon>

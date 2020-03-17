@@ -1,4 +1,11 @@
-<mat-card autocomplete="off" role="combobox" flex="column">
+<mat-card
+  autocomplete="off"
+  role="combobox"
+  flex="column"
+  [ngStyle]="{ 'background-color': note.color }"
+>
+  <!-- style="background-color: blueviolet;" -->
+  <!-- for changing color we need to provide color in two fields matcard and text area -->
   <div>
     <div
       class="pin-unpin-title"
@@ -9,7 +16,9 @@
         class="content"
         (click)="!note.trashed && openDialog(note)"
       >
+        <!-- ng style bg color -->
         <textarea
+          [ngStyle]="{ 'background-color': note.color }"
           class="textArea"
           cdkTextareaAutosize
           placeholder="Title"
@@ -39,17 +48,19 @@
       class="content"
       (click)="!note.trashed && openDialog(note)"
     >
+      <!-- ng style bg color -->
       <textarea
         class="textArea"
+        id="note-description"
         cdkTextareaAutosize
         placeholder="Description"
         disabled
-        style="font-size: 12px;"
+        [ngStyle]="{ 'background-color': note.color }"
         >{{ note.description }}</textarea
       >
     </mat-card-content>
     <!-- This block will be display if remainder is not empty -->
-
+    <!-- ng color for bg -->
     <div *ngIf="note.remainderDate != null">
       <mat-card-content class="content">
         <textarea
@@ -57,8 +68,8 @@
           cdkTextareaAutosize
           placeholder="remainder"
           disabled
-          style="font-size: 12px;
-          padding-top: 25px;"
+          [ngStyle]="{ 'background-color': note.color }"
+          id="note-remainder"
           >{{ note.remainderDate }}</textarea
         >
         <button mat-icon-button disableRipple style="transform: scale(0.9);">
