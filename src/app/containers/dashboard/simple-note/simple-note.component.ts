@@ -13,6 +13,7 @@ import { environment } from "src/environments/environment";
 })
 export class SimpleNoteComponent implements OnInit {
   @Input() note: Note;
+  isPinned: boolean;
   constructor(
     private dialog: MatDialog,
     private _noteService: NoteService,
@@ -72,6 +73,46 @@ export class SimpleNoteComponent implements OnInit {
         this._matSnackBar.open(response.message + " sucessfully", "ok", {
           duration: 4000
         });
+      },
+      errors => {
+        console.log("errors : ", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
+          });
+        }
+      }
+    );
+  }
+
+  pinned() {
+    console.log("note fetched for pinn operation ", this.note);
+    this._noteService.pinUnpinNote(this.note.noteId).subscribe(
+      response => {
+        console.log("response : ", response);
+        if (response.statusCode === 200) {
+          console.log("response code pinned", response.message);
+          this.isPinned = true;
+          this._matSnackBar.open(response.message, "Ok", {
+            duration: 2000
+          });
+        } else {
+          console.log("response code unpinned", response.message);
+          this.isPinned = false;
+          this._matSnackBar.open(response.message, "Ok", {
+            duration: 2000
+          });
+        }
       },
       errors => {
         console.log("errors : ", errors);

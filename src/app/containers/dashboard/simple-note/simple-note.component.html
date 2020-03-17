@@ -24,17 +24,13 @@
           <img
             id="pin"
             src="assets/logo/unpin.svg"
-            *ngIf="!isPinned; else pinnedNote"
-            (click)="isPinned = !isPinned"
+            *ngIf="!note.pinned; else pinnedNote"
+            (click)="pinned()"
           />
         </button>
         <ng-template #pinnedNote>
           <button mat-icon-button>
-            <img
-              id="pin"
-              src="assets/logo/pinned.svg"
-              (click)="isPinned = !isPinned"
-            />
+            <img id="pin" src="assets/logo/pinned.svg" (click)="pinned()" />
           </button>
         </ng-template>
       </div>

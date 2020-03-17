@@ -24,7 +24,8 @@ export const environment = {
   DELETE_NOTE_URL: "/trash",
   ARCHIVE_NOTE_URL: "/archive",
   DELETE_FOREVER_NOTE_URL: "/delete",
-  RESTORE_NOTE_URL: "/restore"
+  RESTORE_NOTE_URL: "/restore",
+  PINNED_UNPINNED_NOTE_URL: "/pin"
 };
 
 /*

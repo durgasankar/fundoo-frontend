@@ -23,4 +23,8 @@ export class HttpService {
   public deleteMethod(url: string, options: any): Observable<any> {
     return this._httpClient.delete(url, options);
   }
+
+  public patchMethod(url: string, body: any, options: any): Observable<any> {
+    return this._httpClient.patch(url, body, options);
+  }
 }
