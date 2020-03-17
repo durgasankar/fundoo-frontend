@@ -13,22 +13,22 @@ import { environment } from "src/environments/environment";
 export class IconListComponent implements OnInit {
   arrayOfColors = [
     [
-      { color: "#fff", name: "white" },
-      { color: "rgba(229, 84, 81,1)", name: "Red" },
+      { color: "rgba(255,255,255,1)", name: "white" },
+      { color: "rgba(231, 116, 113,1)", name: "Red" },
       { color: "rgba(249, 150, 107,1)", name: "Orange" },
       { color: "rgba(233, 171, 23,1)", name: "Yellow" }
     ],
     [
       { color: "rgba(137, 195, 92,1)", name: "Green" },
-      { color: "rgba(0, 128, 128,1)", name: "Teal" },
-      { color: "rgba(183, 206, 236,1)", name: "Blue" },
-      { color: "rgba(105, 96, 236,1)", name: "Dark blue" }
+      { color: "rgba(132, 139, 121,1)", name: "Teal" },
+      { color: "rgba(198, 222, 255,1)", name: "Blue" },
+      { color: "rgba( 114, 143, 206,1)", name: "Dark blue" }
     ],
     [
-      { color: "rgba(145, 114, 236,0.7)", name: "Purple" },
+      { color: "rgba( 158, 123, 255,1)", name: "Purple" },
       { color: "rgba(230, 169, 236,1)", name: "Pink" },
       { color: "rgba(194, 178, 128,1)", name: "Brown" },
-      { color: " rgba(229, 228, 226,1)", name: "Gray" }
+      { color: "rgba(229, 228, 226,1)", name: "Gray" }
     ]
   ];
   constructor(
