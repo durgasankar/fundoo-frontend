@@ -13,7 +13,7 @@ import { environment } from "src/environments/environment";
 })
 export class SimpleNoteComponent implements OnInit {
   @Input() note: Note;
-  @Input() arrayOfColors
+  @Input() arrayOfColors;
   isPinned: boolean;
   constructor(
     private dialog: MatDialog,
@@ -28,6 +28,7 @@ export class SimpleNoteComponent implements OnInit {
     const matDialogueReference = this.dialog.open(UpdateNoteComponent, {
       width: "400px",
       height: "auto",
+      
       panelClass: "custom-dialog-container",
       data: { note }
     });

@@ -5,11 +5,13 @@ import { environment } from "src/environments/environment";
 import { HttpHeaders } from "@angular/common/http";
 import { Subject, BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
+import { Color } from "../models/color";
 
 @Injectable({
   providedIn: "root"
 })
 export class NoteService {
+  public noteColor: Color;
   private createNoteUrl: string = `${environment.NOTE_API_URL +
     environment.CREATE_NOTE_URL}`;
 

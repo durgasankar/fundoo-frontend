@@ -1,3 +1,4 @@
+import { Color } from "./../../../models/color";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material";
 import { NoteService } from "src/app/services/note.service";
@@ -42,8 +43,15 @@ export class IconListComponent implements OnInit {
 
   changeColor(color) {
     console.log("fetched color object : ", color);
+    // transfering color information to a variable
+    this._noteService.noteColor = color;
+    console.log("note color from variable : ", this._noteService.noteColor);
+
     this._noteService
-      .changeColorOfNote(this.note.noteId, color.colorCode)
+      .changeColorOfNote(
+        this.note.noteId,
+        this._noteService.noteColor.colorCode
+      )
       .subscribe(
         response => {
           console.log("response : ", response);

@@ -1,4 +1,9 @@
-<mat-card mat-dialog-content fxLayout="column" fxFlex>
+<mat-card
+  mat-dialog-content
+  fxLayout="column"
+  fxFlex
+  [ngStyle]="{ 'background-color': note.color }"
+>
   <mat-card-title>
     <textarea
       id="title"
@@ -7,6 +12,7 @@
       matTextareaAutosize
       type="text"
       placeholder="Title"
+      [ngStyle]="{ 'background-color': note.color }"
     ></textarea>
   </mat-card-title>
   <mat-card-content>
@@ -14,8 +20,10 @@
       matInput
       type="text"
       matTextareaAutosize
+      
       placeholder="Take a note"
       [(ngModel)]="note.description"
+      [ngStyle]="{ 'background-color': note.color }"
     ></textarea>
   </mat-card-content>
   <div class="lastEdit" *ngIf="note.updatedDate != null" align="end">
