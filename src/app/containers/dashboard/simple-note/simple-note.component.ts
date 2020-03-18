@@ -13,6 +13,7 @@ import { environment } from "src/environments/environment";
 })
 export class SimpleNoteComponent implements OnInit {
   @Input() note: Note;
+  @Input() arrayOfColors
   isPinned: boolean;
   constructor(
     private dialog: MatDialog,

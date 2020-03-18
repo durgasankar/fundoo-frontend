@@ -1,3 +1,4 @@
+import { DisplayBoxComponent } from "./containers/dashboard/display-box/display-box.component";
 import { TrashedNotesComponent } from "./containers/dashboard/trashed-notes/trashed-notes.component";
 import { ArchievedNotesComponent } from "./containers/dashboard/archieved-notes/archieved-notes.component";
 import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
@@ -9,7 +10,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { RegistrationComponent } from "./containers/user-authentication/registration/registration.component";
 import { PageNotFoundComponent } from "./containers/page-not-found/page-not-found.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
-import { NoteComponent } from "./containers/dashboard/note/note.component";
 import { RemainderNotesComponent } from "./containers/dashboard/remainder-notes/remainder-notes.component";
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: "", redirectTo: "/dashboard/notes", pathMatch: "full" },
-      { path: "notes", component: NoteComponent },
+      { path: "notes", component: DisplayBoxComponent },
       { path: "remainders", component: RemainderNotesComponent },
       { path: "archieve", component: ArchievedNotesComponent },
       { path: "trash", component: TrashedNotesComponent }

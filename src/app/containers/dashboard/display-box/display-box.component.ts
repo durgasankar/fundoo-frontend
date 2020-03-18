@@ -1,16 +1,16 @@
-import { NoteService } from "./../../../services/note.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import { NoteService } from "src/app/services/note.service";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
-import { environment } from "src/environments/environment";
 
 @Component({
-  selector: "app-note",
-  templateUrl: "./note.component.html",
-  styleUrls: ["./note.component.scss"]
+  selector: "app-display-box",
+  templateUrl: "./display-box.component.html",
+  styleUrls: ["./display-box.component.scss"]
 })
-export class NoteComponent implements OnInit {
+export class DisplayBoxComponent implements OnInit {
   createNoteForm: FormGroup;
   card: boolean = false;
   constructor(

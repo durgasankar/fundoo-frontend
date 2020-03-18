@@ -48,7 +48,7 @@ import { ForgotPasswordComponent } from "./containers/user-authentication/forgot
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { AccoutActivationComponent } from "./containers/user-authentication/accout-activation/accout-activation.component";
 import { UpdatePasswordComponent } from "./containers/user-authentication/update-password/update-password.component";
-import { NoteComponent } from "./containers/dashboard/note/note.component";
+import { DisplayBoxComponent } from "./containers/dashboard/display-box/display-box.component";
 import { DisplayNotesComponent } from "./containers/dashboard/display-notes/display-notes.component";
 import { ArchievedNotesComponent } from "./containers/dashboard/archieved-notes/archieved-notes.component";
 import { RemainderNotesComponent } from "./containers/dashboard/remainder-notes/remainder-notes.component";
@@ -57,7 +57,7 @@ import { PinnedNotesComponent } from "./containers/dashboard/pinned-notes/pinned
 import { SimpleNoteComponent } from "./containers/dashboard/simple-note/simple-note.component";
 import { UpdateNoteComponent } from "./containers/dashboard/update-note/update-note.component";
 import { IconListComponent } from "./containers/dashboard/icon-list/icon-list.component";
-const MaterialComponents = [
+const MaterialModule = [
   BrowserModule,
   BrowserAnimationsModule,
   MatCheckboxModule,
@@ -103,7 +103,7 @@ const MaterialComponents = [
     DashboardComponent,
     AccoutActivationComponent,
     UpdatePasswordComponent,
-    NoteComponent,
+    DisplayBoxComponent,
     DisplayNotesComponent,
     ArchievedNotesComponent,
     RemainderNotesComponent,
@@ -120,7 +120,7 @@ const MaterialComponents = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MaterialComponents,
+    MaterialModule,
     NgxSpinnerModule,
     HttpClientModule,
     ReactiveFormsModule

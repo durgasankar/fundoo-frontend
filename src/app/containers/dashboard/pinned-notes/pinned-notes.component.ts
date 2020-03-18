@@ -30,12 +30,11 @@ export class PinnedNotesComponent implements OnInit {
   getAllPinnedNotes() {
     this._noteService.getAllPinnedNotes().subscribe(
       (response: any) => {
-        console.log(response);
+        console.log("response : ",response);
         this.pinnedNotes = response.obj;
         if (this.pinnedNotes.length === 0) {
           this.isEmptyPinnedNotesList = true;
         } else {
-          console.log("response", response);
           this.isEmptyPinnedNotesList = false;
         }
       },

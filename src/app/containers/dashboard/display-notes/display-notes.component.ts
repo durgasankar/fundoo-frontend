@@ -16,8 +16,7 @@ export class DisplayNotesComponent implements OnInit {
     private _matSnackBar: MatSnackBar,
     private _noteService: NoteService
   ) {}
-
-  private expand: any = false;
+  expand: any = false;
   notes: Note[];
   isEmptyNotesList: boolean;
 
