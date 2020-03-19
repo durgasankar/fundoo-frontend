@@ -46,25 +46,54 @@ export class IconListComponent implements OnInit {
   today: any;
 
   openTimePicker(noteId) {
-    console.log("NoteID to set alram-----", noteId);
+    // pop up for setting alarm
+    console.log("fetched note id for remainder : ", noteId);
     const amazingTimePicker = this._amazingTimePicker.open({
       time: this.selectedTime,
       theme: "dark",
       arrowStyle: {
-        background: "purple",
+        background: "red",
         color: "white"
       }
     });
-
+    // after choosing time from clock
     amazingTimePicker.afterClose().subscribe(time => {
+      // storing the selected time in a variable with some string concatination
       this.selectedTime = time + ":00 hours";
       console.log("time selected : ", this.selectedTime);
+      // after getting data from clock call for remainder operation
       this._noteService.addRemainderToNote(noteId, this.selectedTime).subscribe(
         response => {
           console.log("response : ", response);
+          this._matSnackBar.open(response.message, "ok", {
+            duration: 4000
+          });
         },
         errors => {
           console.log("errors", errors);
+          if (errors.error.statusCode === 401) {
+            localStorage.clear();
+            this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+            this._matSnackBar.open(
+              errors.error.message + " , login to continue.",
+              "Opps!",
+              {
+                duration: 5000
+              }
+            );
+          } else if (errors.error.statusCode === 502) {
+            console.log(
+              "alarm already set for that time : ",
+              this.selectedTime
+            );
+            this._matSnackBar.open(errors.error.message, "Opps!", {
+              duration: 5000
+            });
+          } else {
+            this._matSnackBar.open(errors.error.message, "ok", {
+              duration: 5000
+            });
+          }
         }
       );
     });
