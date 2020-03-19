@@ -7,7 +7,7 @@ export class Note {
   public isArchived: boolean;
   public color: String;
   public reminder: String;
-  public remainderDate: string;
+  public remainderTime: string;
   public createdDate: String;
   public updatedDate: string;
   public userId: number;

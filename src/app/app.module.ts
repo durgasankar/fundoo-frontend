@@ -4,6 +4,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { AmazingTimePickerModule } from "amazing-time-picker";
 import {
   MatButtonModule,
   MatInputModule,
@@ -123,7 +124,8 @@ const MaterialModule = [
     MaterialModule,
     NgxSpinnerModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AmazingTimePickerModule
   ],
   entryComponents: [UpdateNoteComponent],
   providers: [],

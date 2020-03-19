@@ -1,5 +1,11 @@
 <mat-card-footer fxLayout="row" fxLayoutAlign="space-between end">
-  <button mat-icon-button matTooltip="Remind me">
+  <!-- remainder -->
+  <button
+    mat-icon-button
+    matTooltip="Remind me"
+    (click)="openTimePicker(note.noteId)"
+    type="time"
+  >
     <mat-icon>add_alert</mat-icon>
   </button>
   <button mat-icon-button>

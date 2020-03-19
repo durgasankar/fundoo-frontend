@@ -261,4 +261,28 @@ export class NoteService {
         })
       );
   }
+
+  public addRemainderToNote(noteId: number, time: string) {
+    console.log("service reached with id : " + noteId);
+    console.log(
+      `${environment.NOTE_API_URL}` +
+        "/" +
+        noteId +
+        `${environment.ADD_REMAINDER_URL}${time}`
+    );
+    return this._httpService
+      .putMethod(
+        `${environment.NOTE_API_URL}` +
+          "/" +
+          noteId +
+          `${environment.ADD_REMAINDER_URL}${time}`,
+        {},
+        this.httpOptions
+      )
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
+  }
 }

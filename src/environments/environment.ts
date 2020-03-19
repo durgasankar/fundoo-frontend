@@ -26,7 +26,8 @@ export const environment = {
   DELETE_FOREVER_NOTE_URL: "/delete",
   RESTORE_NOTE_URL: "/restore",
   PINNED_UNPINNED_NOTE_URL: "/pin",
-  CHANGE_COLOR_NOTE_URL: "?color="
+  CHANGE_COLOR_NOTE_URL: "?color=",
+  ADD_REMAINDER_URL: "/remainder/add?time="
 };
 
 /*

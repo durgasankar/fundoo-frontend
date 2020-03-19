@@ -5,6 +5,7 @@ import { NoteService } from "src/app/services/note.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Note } from "src/app/models/Note";
 import { environment } from "src/environments/environment";
+import { AmazingTimePickerService } from "amazing-time-picker";
 
 @Component({
   selector: "app-icon-list",
@@ -35,11 +36,39 @@ export class IconListComponent implements OnInit {
   constructor(
     private _noteService: NoteService,
     private _matSnackBar: MatSnackBar,
-    private _router: Router
+    private _router: Router,
+    private _amazingTimePicker: AmazingTimePickerService
   ) {}
   @Input() note: Note;
 
   ngOnInit() {}
+  selectedTime: string;
+  today: any;
+
+  openTimePicker(noteId) {
+    console.log("NoteID to set alram-----", noteId);
+    const amazingTimePicker = this._amazingTimePicker.open({
+      time: this.selectedTime,
+      theme: "dark",
+      arrowStyle: {
+        background: "purple",
+        color: "white"
+      }
+    });
+
+    amazingTimePicker.afterClose().subscribe(time => {
+      this.selectedTime = time + ":00 hours";
+      console.log("time selected : ", this.selectedTime);
+      this._noteService.addRemainderToNote(noteId, this.selectedTime).subscribe(
+        response => {
+          console.log("response : ", response);
+        },
+        errors => {
+          console.log("errors", errors);
+        }
+      );
+    });
+  }
 
   changeColor(color) {
     console.log("fetched color object : ", color);

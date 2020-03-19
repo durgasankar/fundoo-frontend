@@ -41,5 +41,12 @@ mat-card {
 }
 #note-remainder {
   font-size: 12px;
-  padding-top: 25px;
+  margin-top: 25px;
+}
+#remainder-box {
+  display: flex;
+}
+#remainder-btn {
+  transform: scale(0.9);
+  margin-top: 15px;
 }

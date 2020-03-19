@@ -61,8 +61,8 @@
     </mat-card-content>
     <!-- This block will be display if remainder is not empty -->
     <!-- ng color for bg -->
-    <div *ngIf="note.remainderDate != null">
-      <mat-card-content class="content">
+    <div *ngIf="note.remainderTime != null">
+      <mat-card-content class="content" id="remainder-box">
         <textarea
           class="textArea"
           cdkTextareaAutosize
@@ -70,10 +70,10 @@
           disabled
           [ngStyle]="{ 'background-color': note.color }"
           id="note-remainder"
-          >{{ note.remainderDate }}</textarea
+          >{{ note.remainderTime }}</textarea
         >
-        <button mat-icon-button disableRipple style="transform: scale(0.9);">
-          <mat-icon style=" margin-bottom: 10px;">highlight_off</mat-icon>
+        <button mat-icon-button disableRipple id="remainder-btn">
+          <mat-icon>highlight_off</mat-icon>
         </button>
       </mat-card-content>
     </div>
