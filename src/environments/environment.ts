@@ -27,7 +27,8 @@ export const environment = {
   RESTORE_NOTE_URL: "/restore",
   PINNED_UNPINNED_NOTE_URL: "/pin",
   CHANGE_COLOR_NOTE_URL: "?color=",
-  ADD_REMAINDER_URL: "/remainder/add?time="
+  ADD_REMAINDER_URL: "/remainder/add?time=",
+  REMOVE_REMAINDER_URL: "/remainder/remove"
 };
 
 /*

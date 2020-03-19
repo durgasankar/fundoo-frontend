@@ -72,7 +72,12 @@
           id="note-remainder"
           >{{ note.remainderTime }}</textarea
         >
-        <button mat-icon-button disableRipple id="remainder-btn">
+        <!-- remove remainder time -->
+        <button
+          mat-icon-button
+          id="remainder-btn"
+          (click)="removeRemainder(note.noteId)"
+        >
           <mat-icon>highlight_off</mat-icon>
         </button>
       </mat-card-content>

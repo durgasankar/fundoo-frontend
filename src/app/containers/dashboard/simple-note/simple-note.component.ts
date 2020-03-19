@@ -136,4 +136,16 @@ export class SimpleNoteComponent implements OnInit {
       }
     );
   }
+
+  removeRemainder(noteId) {
+    console.log("fetched note id : ", noteId);
+    this._noteService.removeRemainder(noteId).subscribe(
+      response => {
+        console.log("response : ", response);
+      },
+      errors => {
+        console.log("errors : ", errors);
+      }
+    );
+  }
 }
