@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   USER_API_URL: "http://localhost:8081/user",
   NOTE_API_URL: "http://localhost:8081/notes",
+  LABEL_API_URL: "http://localhost:8081/labels",
   // user api urls
   REGISTRATION_URL: "/registration",
   LOGIN_URL: "/login",
@@ -28,7 +29,9 @@ export const environment = {
   PINNED_UNPINNED_NOTE_URL: "/pin",
   CHANGE_COLOR_NOTE_URL: "?color=",
   ADD_REMAINDER_URL: "/remainder/add?time=",
-  REMOVE_REMAINDER_URL: "/remainder/remove"
+  REMOVE_REMAINDER_URL: "/remainder/remove",
+  // label note
+  GET_ALL_LABELS_URL: "/fetch"
 };
 
 /*

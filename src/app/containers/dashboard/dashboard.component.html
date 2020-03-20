@@ -176,9 +176,7 @@
                     </button>
                   </div>
                 </div>
-
                 <mat-divider></mat-divider>
-
                 <div
                   class="labels-button"
                   fxLayout="column"
@@ -187,11 +185,16 @@
                 >
                   <div id="label_name">LABELS</div>
                   <!-- labesls will be posted -->
+                  <div class="allLabels" *ngFor="let label of labelsList">
+                    label.labelName
+                  </div>
 
                   <div class="create-label">
-                    <button mat-button>
-                      <mat-icon>create</mat-icon>Create Labels
+                    <button mat-button id="sidenav-button">
+                      <mat-icon style="margin-right: 40px;">create</mat-icon
+                      >Edit Labels
                     </button>
+                    <!-- (click)="openLabelDialog()" -->
                   </div>
                 </div>
 

@@ -27,4 +27,11 @@ export class HttpService {
   public patchMethod(url: string, body: any, options: any): Observable<any> {
     return this._httpClient.patch(url, body, options);
   }
+  // fetching token from local storage stored during login
+  public httpOptions = {
+    headers: new HttpHeaders({
+      "content-type": "application/json",
+      token: localStorage.getItem("token")
+    })
+  };
 }

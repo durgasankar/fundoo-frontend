@@ -2,7 +2,6 @@ import { Note } from "./../models/Note";
 import { HttpService } from "./http.service";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { HttpHeaders } from "@angular/common/http";
 import { Subject, BehaviorSubject } from "rxjs";
 import { tap } from "rxjs/operators";
 import { Color } from "../models/color";
@@ -41,23 +40,15 @@ export class NoteService {
     return this._subject;
   }
 
-  // fetching token from local storage stored during login
-  private httpOptions = {
-    headers: new HttpHeaders({
-      "content-type": "application/json",
-      token: localStorage.getItem("token")
-    })
-  };
-
   public createNote(note: Note) {
     console.log(
       "fetching token from header : ",
-      this.httpOptions,
+      this._httpService.httpOptions,
       "note : ",
       note
     );
     return this._httpService
-      .postMethod(this.createNoteUrl, note, this.httpOptions)
+      .postMethod(this.createNoteUrl, note, this._httpService.httpOptions)
       .pipe(
         tap(() => {
           this._subject.next();
@@ -68,7 +59,10 @@ export class NoteService {
   public getAllNotes() {
     console.log(" all notes service reached");
 
-    return this._httpService.getMethod(this.getAllNotesUrl, this.httpOptions);
+    return this._httpService.getMethod(
+      this.getAllNotesUrl,
+      this._httpService.httpOptions
+    );
   }
 
   public getAllRemainderNotes() {
@@ -76,14 +70,14 @@ export class NoteService {
 
     return this._httpService.getMethod(
       this.getAllRemainderNotesUrl,
-      this.httpOptions
+      this._httpService.httpOptions
     );
   }
   public getAllArchivedNotes() {
     console.log("archived Service Reached");
     return this._httpService.getMethod(
       this.getAllArchivedNotesUrl,
-      this.httpOptions
+      this._httpService.httpOptions
     );
   }
 
@@ -91,7 +85,7 @@ export class NoteService {
     console.log("archived Service Reached");
     return this._httpService.getMethod(
       this.getAllTrashedNotesUrl,
-      this.httpOptions
+      this._httpService.httpOptions
     );
   }
 
@@ -99,14 +93,14 @@ export class NoteService {
     console.log("archived Service Reached");
     return this._httpService.getMethod(
       this.getAllPinnedNotesUrl,
-      this.httpOptions
+      this._httpService.httpOptions
     );
   }
 
   public updateNote(note: Note, noteId: number) {
     console.log(
       "fetching token from header : ",
-      this.httpOptions,
+      this._httpService.httpOptions,
       "note for updation : ",
       note
     );
@@ -114,7 +108,7 @@ export class NoteService {
       .putMethod(
         `${environment.NOTE_API_URL + environment.UPDATE_NOTE_URL}${noteId}`,
         note,
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -136,7 +130,7 @@ export class NoteService {
           "/" +
           noteId +
           `${environment.DELETE_NOTE_URL}`,
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -159,7 +153,7 @@ export class NoteService {
           "/" +
           noteId +
           `${environment.ARCHIVE_NOTE_URL}`,
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -181,7 +175,7 @@ export class NoteService {
           "/" +
           noteId +
           `${environment.DELETE_FOREVER_NOTE_URL}`,
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -205,7 +199,7 @@ export class NoteService {
           noteId +
           `${environment.RESTORE_NOTE_URL}`,
         {},
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -229,7 +223,7 @@ export class NoteService {
           noteId +
           `${environment.PINNED_UNPINNED_NOTE_URL}`,
         {},
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -253,7 +247,7 @@ export class NoteService {
           noteId +
           `${environment.CHANGE_COLOR_NOTE_URL}${color}`,
         {},
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -277,7 +271,7 @@ export class NoteService {
           noteId +
           `${environment.ADD_REMAINDER_URL}${time}`,
         {},
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {
@@ -300,7 +294,7 @@ export class NoteService {
           "/" +
           noteId +
           `${environment.REMOVE_REMAINDER_URL}`,
-        this.httpOptions
+        this._httpService.httpOptions
       )
       .pipe(
         tap(() => {

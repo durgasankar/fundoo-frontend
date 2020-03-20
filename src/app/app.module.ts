@@ -58,6 +58,8 @@ import { PinnedNotesComponent } from "./containers/dashboard/pinned-notes/pinned
 import { SimpleNoteComponent } from "./containers/dashboard/simple-note/simple-note.component";
 import { UpdateNoteComponent } from "./containers/dashboard/update-note/update-note.component";
 import { IconListComponent } from "./containers/dashboard/icon-list/icon-list.component";
+import { DisplayLabelComponent } from "./containers/dashboard/labels/display-label/display-label.component";
+import { CreateLabelComponent } from './containers/dashboard/labels/create-label/create-label.component';
 const MaterialModule = [
   BrowserModule,
   BrowserAnimationsModule,
@@ -112,7 +114,9 @@ const MaterialModule = [
     PinnedNotesComponent,
     SimpleNoteComponent,
     UpdateNoteComponent,
-    IconListComponent
+    IconListComponent,
+    DisplayLabelComponent,
+    CreateLabelComponent
   ],
   imports: [
     BrowserModule,
