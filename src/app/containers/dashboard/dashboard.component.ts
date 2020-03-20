@@ -60,7 +60,28 @@ export class DashboardComponent implements OnInit {
   }
   displayAllNotes() {
     console.log("getting all notes : ");
-    this._noteService.getAllNotes();
+    this._noteService.getAllNotes().subscribe(
+      response => {
+        console.log("response : ", response);
+      },
+      errors => {
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
+          });
+        }
+      }
+    );
   }
 
   displayAllLabels() {
@@ -68,9 +89,26 @@ export class DashboardComponent implements OnInit {
     this._labelService.getAllLabelsList().subscribe(
       response => {
         console.log("response : ", response);
+        this.labelsList = response.obj;
+        console.log("labels list after transfering data : ", this.labelsList);
       },
       errors => {
         console.log("errors :", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
+          });
+        }
       }
     );
   }

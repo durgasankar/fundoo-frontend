@@ -16,6 +16,7 @@
   margin-left: 2em;
   padding-top: 5px;
   font-size: 13px;
+  letter-spacing: 0.75px;
   text-align: center;
 }
 .menu-container {
@@ -43,9 +44,6 @@
 }
 .mat-drawer-backdrop.mat-drawer-shown {
   visibility: hidden !important;
-}
-.labels1 {
-  margin-left: 17px;
 }
 
 input.input:focus {
@@ -100,9 +98,6 @@ input.input:focus {
   color: #fff;
   border: 0;
 }
-mat-icon {
-  opacity: 0.75;
-}
 #sidenav-button:focus {
   background-color: rgba(255, 196, 0, 0.2);
   margin-top: 3px;
@@ -117,7 +112,7 @@ mat-icon {
   height: 50px;
 }
 mat-nav-list {
-  margin-left: -20px;
+  margin-left: -22px;
 }
 #sidenav-button {
   display: inline-flex;
@@ -131,4 +126,29 @@ mat-sidenav-content {
   display: block;
   height: 100%;
   overflow: auto;
+}
+// display all lvl in scrolling format
+.lebels-list-container {
+  margin-bottom: 5px;
+  max-height: 200px;
+  min-height: auto;
+  overflow: auto;
+}
+// hide the scroll bar of lvl
+.lebels-list-container::-webkit-scrollbar {
+  display: none;
+}
+.remainder-notes-container {
+  padding-bottom: 10px;
+}
+.archive-trash-container {
+  padding-top: 10px;
+}
+#copy-write {
+  text-align: end;
+  color: rgba(128, 128, 128, 0.6);
+  font-size: 16px;
+}
+p {
+  padding: 0px 5px;
 }

@@ -181,18 +181,22 @@
                   class="labels-button"
                   fxLayout="column"
                   fxLayoutAlign="space-around start"
-                  fxLayoutGap="20px"
                 >
                   <div id="label_name">LABELS</div>
                   <!-- labesls will be posted -->
-                  <div class="allLabels" *ngFor="let label of labelsList">
-                    label.labelName
+                  <div class="lebels-list-container">
+                    <div class="allLabels" *ngFor="let label of labelsList">
+                      <button mat-button id="sidenav-button">
+                        <mat-icon style="margin-right: 40px;"
+                          >label_important</mat-icon
+                        >{{ label.labelName }}
+                      </button>
+                    </div>
                   </div>
-
                   <div class="create-label">
                     <button mat-button id="sidenav-button">
                       <mat-icon style="margin-right: 40px;">create</mat-icon
-                      >Edit Labels
+                      >Edit labels
                     </button>
                     <!-- (click)="openLabelDialog()" -->
                   </div>
@@ -227,6 +231,7 @@
                 </div>
               </div>
             </mat-nav-list>
+            <span id="copy-write"><p>&copy; r20jc134</p></span>
           </mat-sidenav>
           <mat-sidenav-content
             style="margin-bottom: 100px; padding-bottom: 100px; "
