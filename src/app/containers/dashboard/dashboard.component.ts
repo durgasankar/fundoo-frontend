@@ -4,10 +4,15 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { NgxSpinnerService } from "ngx-spinner";
-import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import {
+  MatSnackBar,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialog
+} from "@angular/material";
 import { refresh } from "src/app/utility/util";
 import { Label } from "src/app/models/label";
-import { CreateLabelComponent } from "./labels/create-label/create-label.component";
+import { EditLabelComponent } from "./labels/edit-label/edit-label.component";
 
 @Component({
   selector: "app-dashboard",
@@ -17,37 +22,51 @@ import { CreateLabelComponent } from "./labels/create-label/create-label.compone
 export class DashboardComponent implements OnInit {
   showSpinner: boolean = false;
   label: Label;
+  labelsList: Label[];
+  grid: boolean = true;
+  imageurl: string;
+  firstName: string = localStorage.getItem("firstName");
   // static profile picture
   profilePicUser: any = "../assets/durgasankar.jpg";
-  
+
   constructor(
     private _noteService: NoteService,
     private _router: Router,
     private _spinner: NgxSpinnerService,
     private _matSnackBar: MatSnackBar,
-    private _labelService: LabelService
+    private _labelService: LabelService,
+    private _matDialog: MatDialog
   ) {
     this._labelService.autoRefesh.subscribe(() => {
       this.displayAllLabels();
     });
   }
 
-  //   public dialogRef: MatDialogRef<CreateLabelComponent>,
-  // @Inject(MAT_DIALOG_DATA) public data: any
-  labelsList: Label[];
-  grid: boolean = true;
-  imageurl: string;
-  firstName: string = localStorage.getItem("firstName");
   ngOnInit() {
     // it will display during page load
     this.displayAllLabels();
   }
+
+  openEditLabelDialog() {
+    const dialogRef = this._matDialog.open(EditLabelComponent, {
+      width: "330px",
+      height: "Auto",
+      panelClass: "custom-dialog-container",
+      data: this.labelsList
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed with out any change");
+    });
+  }
+
   onClickView() {
     return this.grid === true ? (this.grid = false) : (this.grid = true);
   }
+
   refreshButton() {
     refresh();
   }
+
   signOut() {
     console.log("signing out => clearing token");
     this._spinner.show();
@@ -59,6 +78,7 @@ export class DashboardComponent implements OnInit {
     this.showSpinner = false;
     localStorage.clear();
   }
+
   // displayAllNotes() {
   //   console.log("getting all notes : ");
   //   this._noteService.getAllNotes();

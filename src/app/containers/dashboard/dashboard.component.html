@@ -193,11 +193,14 @@
                     </div>
                   </div>
                   <div class="create-label">
-                    <button mat-button id="sidenav-button">
+                    <button
+                      mat-button
+                      id="sidenav-button"
+                      (click)="openEditLabelDialog()"
+                    >
                       <mat-icon style="margin-right: 40px;">create</mat-icon
                       >Edit labels
                     </button>
-                    <!-- (click)="openLabelDialog()" -->
                   </div>
                 </div>
                 <mat-divider></mat-divider>

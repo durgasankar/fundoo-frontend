@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisplayLabelComponent } from './display-label.component';
+import { EditLabelComponent } from './edit-label.component';
 
-describe('DisplayLabelComponent', () => {
-  let component: DisplayLabelComponent;
-  let fixture: ComponentFixture<DisplayLabelComponent>;
+describe('EditLabelComponent', () => {
+  let component: EditLabelComponent;
+  let fixture: ComponentFixture<EditLabelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayLabelComponent ]
+      declarations: [ EditLabelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplayLabelComponent);
+    fixture = TestBed.createComponent(EditLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -58,8 +58,7 @@ import { PinnedNotesComponent } from "./containers/dashboard/pinned-notes/pinned
 import { SimpleNoteComponent } from "./containers/dashboard/simple-note/simple-note.component";
 import { UpdateNoteComponent } from "./containers/dashboard/update-note/update-note.component";
 import { IconListComponent } from "./containers/dashboard/icon-list/icon-list.component";
-import { DisplayLabelComponent } from "./containers/dashboard/labels/display-label/display-label.component";
-import { CreateLabelComponent } from './containers/dashboard/labels/create-label/create-label.component';
+import { EditLabelComponent } from "./containers/dashboard/labels/edit-label/edit-label.component";
 const MaterialModule = [
   BrowserModule,
   BrowserAnimationsModule,
@@ -115,8 +114,7 @@ const MaterialModule = [
     SimpleNoteComponent,
     UpdateNoteComponent,
     IconListComponent,
-    DisplayLabelComponent,
-    CreateLabelComponent
+    EditLabelComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +129,8 @@ const MaterialModule = [
     ReactiveFormsModule,
     AmazingTimePickerModule
   ],
-  entryComponents: [UpdateNoteComponent],
+  // any type of dialogue box opening for mat label
+  entryComponents: [UpdateNoteComponent, EditLabelComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
