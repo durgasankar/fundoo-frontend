@@ -158,7 +158,6 @@
                       mat-button
                       id="sidenav-button"
                       [routerLink]="['/dashboard/notes']"
-                      (click)="displayAllNotes()"
                     >
                       <mat-icon id="sidenav-icon">lightbulb_outline</mat-icon>
                       Notes
@@ -201,9 +200,7 @@
                     <!-- (click)="openLabelDialog()" -->
                   </div>
                 </div>
-
                 <mat-divider></mat-divider>
-
                 <div
                   class="archive-trash-container"
                   fxLayout="column"

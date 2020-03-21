@@ -1,7 +1,7 @@
 import { environment } from "src/environments/environment";
 import { UserService } from "src/app/services/user.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService
   ) {}
-
+  // ngOnDestroy() {
+  //   window.location.reload();
+  // }
   ngOnInit() {
     this.spinner.show();
     this.loginForm = this.formBuilder.group({

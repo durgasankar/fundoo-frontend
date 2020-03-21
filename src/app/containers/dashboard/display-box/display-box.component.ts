@@ -19,32 +19,26 @@ export class DisplayBoxComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _noteService: NoteService
   ) {}
+
   ngOnInit() {
     this.createNoteForm = this._formBuilder.group({
       title: [null, Validators.required],
       description: [null, Validators.required]
     });
   }
+
   cardSwap() {
     console.log(this.card);
     return this.card === true ? (this.card = false) : (this.card = true);
   }
   createNote() {
     if (this.createNoteForm.invalid) {
-      // console.log("title : ", this.createNoteForm.controls.title);
-      // console.log("direct form", this.createNoteForm);
-      console.log("opps! no notes are added");
-
+      console.log("Opps! no notes are added...");
       return;
     } else {
       this._noteService.createNote(this.createNoteForm.value).subscribe(
         response => {
           console.log("response : ", response);
-          //   console.log("direct form inside valid : ", this.createNoteForm);
-          // console.log(
-          //   "title valid value : ",
-          //   this.createNoteForm.controls.title.value
-          // );
           this._snackBar.open(response.message + " sucessfully...", "ok", {
             duration: 4000
           });
