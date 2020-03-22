@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { HttpService } from "./http.service";
 import { Subject } from "rxjs";
 import { HttpHeaders } from "@angular/common/http";
+import { Label } from "../models/label";
 
 @Injectable({
   providedIn: "root"
@@ -19,7 +20,7 @@ export class LabelService {
   public get autoRefesh() {
     return this._subject;
   }
-  
+
   public getAllLabelsList() {
     console.log("all list fetching from service : ");
     return this._httpservice.getMethod(

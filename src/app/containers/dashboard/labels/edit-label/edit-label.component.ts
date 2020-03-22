@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { MatDialogRef } from "@angular/material";
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from "@angular/material";
 import { LabelService } from "src/app/services/label.service";
 import { Label } from "src/app/models/label";
+import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-edit-label",
@@ -9,17 +11,28 @@ import { Label } from "src/app/models/label";
   styleUrls: ["./edit-label.component.scss"]
 })
 export class EditLabelComponent implements OnInit {
-  label: Label = new Label();
+  newLabel: Label = new Label();
   token = localStorage.getItem("token");
   hitCancel: boolean;
-  @Input() labelsList: Label[];
+  labelsList: Label[];
 
   constructor(
     private labelService: LabelService,
-    private dialogRef: MatDialogRef<EditLabelComponent>
-  ) {}
+    private dialogRef: MatDialogRef<EditLabelComponent>,
+    private _router: Router,
+    private _matSnackBar: MatSnackBar,
+    private _labelService: LabelService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this._labelService.autoRefesh.subscribe(() => {
+      this.displayAllLabels();
+    });
+    this.labelsList = data.labelsList;
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.displayAllLabels();
+  }
 
   cancel() {
     this.hitCancel = true;
@@ -50,4 +63,12 @@ export class EditLabelComponent implements OnInit {
   //     );
   //   }
   // }
+
+  displayAllLabels() {
+    console.log("getting all labels : ");
+    this._labelService.getAllLabelsList().subscribe(response => {
+      console.log("response : ", response);
+      this.labelsList = response.obj;
+    });
+  }
 }

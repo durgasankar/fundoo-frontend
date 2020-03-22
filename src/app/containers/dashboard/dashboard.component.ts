@@ -1,6 +1,6 @@
 import { LabelService } from "./../../services/label.service";
 import { NoteService } from "src/app/services/note.service";
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // it will display during page load
+    //  it will display during page load
     this.displayAllLabels();
   }
 
@@ -51,7 +51,8 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this._matDialog.open(EditLabelComponent, {
       width: "330px",
       height: "Auto",
-      panelClass: "custom-dialog-container",
+      maxHeight: "450px",
+      panelClass: "custom-dialog-container-label",
       data: this.labelsList
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -79,10 +80,10 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
   }
 
-  // displayAllNotes() {
-  //   console.log("getting all notes : ");
-  //   this._noteService.getAllNotes();
-  // }
+  displayAllNotes() {
+    console.log("getting all notes : ");
+    this._noteService.getAllNotes();
+  }
 
   displayAllLabels() {
     console.log("getting all labels : ");

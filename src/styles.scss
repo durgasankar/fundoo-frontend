@@ -16,3 +16,9 @@ body {
 mat-icon {
   opacity: 0.75;
 }
+// global style for mat-dialog-box for label operation
+.custom-dialog-container-label {
+  mat-dialog-container {
+    padding: 10px;
+  }
+}
