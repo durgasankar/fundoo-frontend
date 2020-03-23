@@ -66,7 +66,7 @@ export class NoteService {
   }
 
   public getAllRemainderNotes() {
-    console.log("remainder service reached");
+    console.log("get all remainder notes service reached");
 
     return this._httpService.getMethod(
       this.getAllRemainderNotesUrl,
@@ -74,7 +74,7 @@ export class NoteService {
     );
   }
   public getAllArchivedNotes() {
-    console.log("archived Service Reached");
+    console.log("get all archived notes Service Reached");
     return this._httpService.getMethod(
       this.getAllArchivedNotesUrl,
       this._httpService.httpOptions
@@ -82,7 +82,7 @@ export class NoteService {
   }
 
   public getAllTrashedNotes() {
-    console.log("archived Service Reached");
+    console.log("get all trashed notes Service Reached");
     return this._httpService.getMethod(
       this.getAllTrashedNotesUrl,
       this._httpService.httpOptions
@@ -90,7 +90,7 @@ export class NoteService {
   }
 
   public getAllPinnedNotes() {
-    console.log("archived Service Reached");
+    console.log("get all pinned notes Service Reached");
     return this._httpService.getMethod(
       this.getAllPinnedNotesUrl,
       this._httpService.httpOptions

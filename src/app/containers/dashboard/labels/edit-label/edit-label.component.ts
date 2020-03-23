@@ -117,4 +117,9 @@ export class EditLabelComponent implements OnInit {
       }
     );
   }
+
+  done() {
+    console.log("Done is clicked...");
+    this.dialogRef.close();
+  }
 }
