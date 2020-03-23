@@ -53,10 +53,25 @@
         <mat-icon>delete</mat-icon>
       </button>
     </div>
-    <div>{{ label.labelName }}</div>
+    <div>
+      <input
+        #inputTag
+        matInput
+        type="text"
+        [value]="label.labelName"
+        autocomplete="off"
+        [readonly]="renameClicked ? 'false' : 'true'"
+        (click)="onInputClick(label.labelId)"
+      />
+    </div>
 
     <div>
-      <button mat-icon-button matTooltip="Rename label" class="icon-button">
+      <button
+        mat-icon-button
+        matTooltip="Rename label"
+        class="icon-button"
+        (click)="renameLabel(label.labelId, inputTag)"
+      >
         <mat-icon>edit</mat-icon>
       </button>
     </div>

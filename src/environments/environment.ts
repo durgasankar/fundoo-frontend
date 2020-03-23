@@ -33,7 +33,8 @@ export const environment = {
   // label note
   GET_ALL_LABELS_URL: "/fetch",
   CREATE_LABEL_URL: "/create",
-  DELETE_LABEL_URL: "/delete"
+  DELETE_LABEL_URL: "/delete",
+  RENAME_LABEL_URL: "/edit?labelName="
 };
 
 /*

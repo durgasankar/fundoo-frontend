@@ -13,7 +13,7 @@ import { environment } from "src/environments/environment";
 export class EditLabelComponent implements OnInit {
   newLabel: Label = new Label();
   token = localStorage.getItem("token");
-
+  renameClicked: boolean;
   labelsList: Label[];
 
   constructor(
@@ -33,6 +33,8 @@ export class EditLabelComponent implements OnInit {
     });
     // bedefault it will load data
     this.displayAllLabels();
+
+    this.renameClicked = false;
   }
 
   createLabel(labelInput: any) {
@@ -121,5 +123,51 @@ export class EditLabelComponent implements OnInit {
   done() {
     console.log("Done is clicked...");
     this.dialogRef.close();
+    this.renameClicked = false;
+  }
+
+  renameLabel(labelId: number, newInput: any) {
+    this.renameClicked = false;
+    console.log("label id : ", labelId);
+    console.log("new Input tag value : ", newInput.value);
+
+    this._labelService.renameLabel(labelId, newInput.value).subscribe(
+      response => {
+        console.log("response : ", response);
+        // if label with the above entered name is already present in the database.
+        if (response.statusCode === 208) {
+          this._matSnackBar.open(response.message, "ok", {
+            duration: 4000
+          });
+        } else {
+          this._matSnackBar.open(response.message + " sucessfully!", "ok", {
+            duration: 4000
+          });
+        }
+      },
+      errors => {
+        console.log("errors : ", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
+          });
+        }
+      }
+    );
+  }
+
+  onInputClick(labelId) {
+    this.renameClicked = true;
+    console.log("click status : ", labelId, this.renameClicked);
   }
 }

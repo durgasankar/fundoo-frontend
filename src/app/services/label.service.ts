@@ -20,8 +20,8 @@ export class LabelService {
   private createLabelUrl: string = `${environment.LABEL_API_URL +
     environment.CREATE_LABEL_URL}`;
 
-  private deleteLabelUrl: string = `${environment.LABEL_API_URL +
-    environment.DELETE_LABEL_URL}`;
+  private renameLabelUrl: string = `${environment.LABEL_API_URL +
+    environment.RENAME_LABEL_URL}`;
 
   public get autoRefesh() {
     return this._subject;
@@ -53,6 +53,33 @@ export class LabelService {
           "/" +
           labelId +
           `${environment.DELETE_LABEL_URL}`,
+        this._httpservice.httpOptions
+      )
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
+  }
+
+  public renameLabel(labelId: number, labelName: string) {
+    console.log("rename label service reached ");
+    console.log(
+      `${environment.LABEL_API_URL}` +
+        "/" +
+        labelId +
+        `${environment.RENAME_LABEL_URL}` +
+        labelName
+    );
+
+    return this._httpservice
+      .putMethod(
+        `${environment.LABEL_API_URL}` +
+          "/" +
+          labelId +
+          `${environment.RENAME_LABEL_URL}` +
+          labelName,
+        {},
         this._httpservice.httpOptions
       )
       .pipe(
