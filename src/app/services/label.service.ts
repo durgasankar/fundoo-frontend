@@ -20,6 +20,9 @@ export class LabelService {
   private createLabelUrl: string = `${environment.LABEL_API_URL +
     environment.CREATE_LABEL_URL}`;
 
+  private deleteLabelUrl: string = `${environment.LABEL_API_URL +
+    environment.DELETE_LABEL_URL}`;
+
   public get autoRefesh() {
     return this._subject;
   }
@@ -35,6 +38,23 @@ export class LabelService {
     console.log("create label service reached");
     return this._httpservice
       .postMethod(this.createLabelUrl, newLabel, this._httpservice.httpOptions)
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
+  }
+
+  public deleteLabel(labelId: number) {
+    console.log("delete label service reached with label id : ", labelId);
+    return this._httpservice
+      .deleteMethod(
+        `${environment.LABEL_API_URL}` +
+          "/" +
+          labelId +
+          `${environment.DELETE_LABEL_URL}`,
+        this._httpservice.httpOptions
+      )
       .pipe(
         tap(() => {
           this._subject.next();

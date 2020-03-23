@@ -44,7 +44,12 @@
     fxLayoutAlign="space-between center"
   >
     <div>
-      <button mat-icon-button matTooltip="Delete label" class="icon-button">
+      <button
+        mat-icon-button
+        matTooltip="Delete label"
+        class="icon-button"
+        (click)="deleteLabel(label.labelId)"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </div>

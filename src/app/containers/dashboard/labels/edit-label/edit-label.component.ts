@@ -24,30 +24,18 @@ export class EditLabelComponent implements OnInit {
     private _labelService: LabelService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this._labelService.autoRefesh.subscribe(() => {
-      this.displayAllLabels();
-    });
     this.labelsList = data.labelsList;
   }
 
   ngOnInit() {
+    this._labelService.autoRefesh.subscribe(() => {
+      this.displayAllLabels();
+    });
+    // bedefault it will load data
     this.displayAllLabels();
   }
 
-  // onSubmit() {
-  //   this.dialogRef.close();
-  //   if (this.label.labelName !== null) {
-  //     this.labelService.createLabel(this.label).subscribe(
-  //       (response: any) => {
-  //         console.log(response);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       }
-  //     );
-  //   }
-  // }
-  createLabel(labelInput) {
+  createLabel(labelInput: any) {
     console.log("labelName entered : ", labelInput.value);
     this._labelService.createLabel(this.newLabel).subscribe(
       response => {
@@ -86,7 +74,7 @@ export class EditLabelComponent implements OnInit {
     labelInput.value = "";
   }
 
-  cancel(labelInput) {
+  cancel(labelInput: any) {
     console.log("labelInput ref on hit cancel : ", labelInput);
     // if cancel is hit then the value will be reseted
     labelInput.labelName = "";
@@ -98,5 +86,35 @@ export class EditLabelComponent implements OnInit {
       console.log("response : ", response);
       this.labelsList = response.obj;
     });
+  }
+
+  deleteLabel(labelId: number) {
+    console.log("fetched label : ", labelId);
+    this._labelService.deleteLabel(labelId).subscribe(
+      response => {
+        console.log("response : ", response);
+        this._matSnackBar.open(response.message, "ok", {
+          duration: 4000
+        });
+      },
+      errors => {
+        console.log("errors : ", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
+          });
+        }
+      }
+    );
   }
 }
