@@ -3,8 +3,8 @@ import { environment } from "src/environments/environment";
 import { Injectable } from "@angular/core";
 import { HttpService } from "./http.service";
 import { Subject } from "rxjs";
-import { HttpHeaders } from "@angular/common/http";
 import { Label } from "../models/label";
+import { tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -17,6 +17,9 @@ export class LabelService {
   private fetchAllLabelsUrl: string = `${environment.LABEL_API_URL +
     environment.GET_ALL_LABELS_URL}`;
 
+  private createLabelUrl: string = `${environment.LABEL_API_URL +
+    environment.CREATE_LABEL_URL}`;
+
   public get autoRefesh() {
     return this._subject;
   }
@@ -27,5 +30,15 @@ export class LabelService {
       this.fetchAllLabelsUrl,
       this._httpservice.httpOptions
     );
+  }
+  public createLabel(newLabel: any) {
+    console.log("create label service reached");
+    return this._httpservice
+      .postMethod(this.createLabelUrl, newLabel, this._httpservice.httpOptions)
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
   }
 }

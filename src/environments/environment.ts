@@ -31,7 +31,8 @@ export const environment = {
   ADD_REMAINDER_URL: "/remainder/add?time=",
   REMOVE_REMAINDER_URL: "/remainder/remove",
   // label note
-  GET_ALL_LABELS_URL: "/fetch"
+  GET_ALL_LABELS_URL: "/fetch",
+  CREATE_LABEL_URL: "/create"
 };
 
 /*

@@ -13,7 +13,7 @@ import { environment } from "src/environments/environment";
 export class EditLabelComponent implements OnInit {
   newLabel: Label = new Label();
   token = localStorage.getItem("token");
-  hitCancel: boolean;
+
   labelsList: Label[];
 
   constructor(
@@ -34,22 +34,6 @@ export class EditLabelComponent implements OnInit {
     this.displayAllLabels();
   }
 
-  cancel() {
-    this.hitCancel = true;
-  }
-
-  // createLabel() {
-  //   console.log("Label creation: ", this.label.labelName);
-  //   this.labelService.createLabel(this.label).subscribe(
-  //     (response: any) => {
-  //       console.log(response);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
   // onSubmit() {
   //   this.dialogRef.close();
   //   if (this.label.labelName !== null) {
@@ -63,6 +47,50 @@ export class EditLabelComponent implements OnInit {
   //     );
   //   }
   // }
+  createLabel(labelInput) {
+    console.log("labelName entered : ", labelInput.value);
+    this._labelService.createLabel(this.newLabel).subscribe(
+      response => {
+        console.log("response : ", response);
+        // if label with the above entered name is already present in the database.
+        if (response.statusCode === 208) {
+          this._matSnackBar.open(response.message, "ok", {
+            duration: 4000
+          });
+        } else {
+          this._matSnackBar.open(response.message + " sucessfully!", "ok", {
+            duration: 4000
+          });
+        }
+      },
+      errors => {
+        console.log("errors : ", errors);
+        if (errors.error.statusCode === 401) {
+          localStorage.clear();
+          this._router.navigateByUrl(`${environment.LOGIN_URL}`);
+          this._matSnackBar.open(
+            errors.error.message + " , login to continue.",
+            "Opps!",
+            {
+              duration: 5000
+            }
+          );
+        } else {
+          this._matSnackBar.open(errors.error.message, "ok", {
+            duration: 4000
+          });
+        }
+      }
+    );
+    // after creation of level the value will be set to empty
+    labelInput.value = "";
+  }
+
+  cancel(labelInput) {
+    console.log("labelInput ref on hit cancel : ", labelInput);
+    // if cancel is hit then the value will be reseted
+    labelInput.labelName = "";
+  }
 
   displayAllLabels() {
     console.log("getting all labels : ");

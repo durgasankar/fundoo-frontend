@@ -1,5 +1,6 @@
 <div>
   <div class="mat-body-2">Edit label</div>
+
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <div>
       <button
@@ -7,27 +8,36 @@
         mat-icon-button
         matTooltip="Cancel"
         class="icon-button"
+        (click)="cancel(newLabel)"
       >
         <mat-icon>close</mat-icon>
       </button>
     </div>
     <div>
       <mat-form-field appearance="fill" autocomplete="off" color="white">
-        <!-- <mat-label>Create new label</mat-label> -->
         <input
           matInput
           id="labelName"
-          [(ngModel)]="newLabel.labelName"
           placeholder="Create new label"
+          [(ngModel)]="newLabel.labelName"
+          #labelInput
         />
       </mat-form-field>
     </div>
+    <!-- input field will remain dissabled when the value is empty -->
     <div>
-      <button mat-icon-button matTooltip="Create label" class="icon-button">
+      <button
+        mat-icon-button
+        [disabled]="labelInput.value === ''"
+        matTooltip="Create label"
+        class="icon-button"
+        (click)="createLabel(labelInput)"
+      >
         <mat-icon>check</mat-icon>
       </button>
     </div>
   </div>
+
   <div
     *ngFor="let label of labelsList"
     fxLayout="row"
@@ -38,7 +48,7 @@
         <mat-icon>delete</mat-icon>
       </button>
     </div>
-    <div style="justify-content: start;">{{ label.labelName }}</div>
+    <div>{{ label.labelName }}</div>
 
     <div>
       <button mat-icon-button matTooltip="Rename label" class="icon-button">
