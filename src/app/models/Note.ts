@@ -1,3 +1,4 @@
+import { Label } from "src/app/models/label";
 export class Note {
   public noteId: number;
   public title: String;
@@ -11,4 +12,5 @@ export class Note {
   public createdDate: String;
   public updatedDate: string;
   public userId: number;
+  public labelsList: Array<any>;
 }

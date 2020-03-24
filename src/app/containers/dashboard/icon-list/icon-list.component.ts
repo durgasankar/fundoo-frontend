@@ -1,6 +1,7 @@
+import { AddLabelComponent } from "./../labels/add-label/add-label.component";
 import { Color } from "./../../../models/color";
 import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar, MatDialog } from "@angular/material";
 import { NoteService } from "src/app/services/note.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Note } from "src/app/models/Note";
@@ -37,7 +38,8 @@ export class IconListComponent implements OnInit {
     private _noteService: NoteService,
     private _matSnackBar: MatSnackBar,
     private _router: Router,
-    private _amazingTimePicker: AmazingTimePickerService
+    private _amazingTimePicker: AmazingTimePickerService,
+    private _matDialog: MatDialog
   ) {}
   @Input() note: Note;
 
@@ -203,5 +205,20 @@ export class IconListComponent implements OnInit {
         }
       }
     );
+  }
+
+  addLabelToNoteDialog(note) {
+    console.log(
+      "fetched Note on add label Click sending the data to add label component : ",
+      note
+    );
+    const dialogReference = this._matDialog.open(AddLabelComponent, {
+      width: "280px",
+      height: "auto",
+      data: { note }
+    });
+    dialogReference.afterClosed().subscribe(result => {
+      console.log("dialog closed with out any change");
+    });
   }
 }

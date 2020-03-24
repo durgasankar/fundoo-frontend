@@ -59,6 +59,7 @@ import { SimpleNoteComponent } from "./containers/dashboard/simple-note/simple-n
 import { UpdateNoteComponent } from "./containers/dashboard/update-note/update-note.component";
 import { IconListComponent } from "./containers/dashboard/icon-list/icon-list.component";
 import { EditLabelComponent } from "./containers/dashboard/labels/edit-label/edit-label.component";
+import { AddLabelComponent } from "./containers/dashboard/labels/add-label/add-label.component";
 const MaterialModule = [
   BrowserModule,
   BrowserAnimationsModule,
@@ -114,7 +115,8 @@ const MaterialModule = [
     SimpleNoteComponent,
     UpdateNoteComponent,
     IconListComponent,
-    EditLabelComponent
+    EditLabelComponent,
+    AddLabelComponent
   ],
   imports: [
     BrowserModule,
@@ -130,7 +132,7 @@ const MaterialModule = [
     AmazingTimePickerModule
   ],
   // any type of dialogue box opening for mat label
-  entryComponents: [UpdateNoteComponent, EditLabelComponent],
+  entryComponents: [UpdateNoteComponent, EditLabelComponent, AddLabelComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

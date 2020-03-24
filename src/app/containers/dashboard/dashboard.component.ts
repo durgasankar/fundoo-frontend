@@ -1,6 +1,6 @@
 import { LabelService } from "./../../services/label.service";
 import { NoteService } from "src/app/services/note.service";
-import { Component, OnInit, Inject, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { NgxSpinnerService } from "ngx-spinner";
