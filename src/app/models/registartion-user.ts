@@ -4,4 +4,5 @@ export class RegistartionUser {
   public emailId: string;
   public mobileNumber: number;
   public password: any;
+  public address: string;
 }

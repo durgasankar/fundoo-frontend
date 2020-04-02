@@ -8,7 +8,6 @@ import { Router } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MatchPassword } from "src/app/utility/password-match";
 import { PlatformLocation } from "@angular/common";
-import { debug } from "util";
 
 @Component({
   selector: "app-registration",
@@ -53,6 +52,10 @@ export class RegistrationComponent implements OnInit {
           Validators.compose([
             Validators.compose([Validators.required, Validators.email])
           ])
+        ],
+        address: [
+          null,
+          [Validators.required, Validators.pattern("^[a-zA-Z]{3,15}$")]
         ],
         mobileNumber: [
           null,

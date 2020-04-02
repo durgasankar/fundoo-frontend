@@ -1,243 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-  </head>
-  <body>
-    <div class="main-div-box">
-      <div class="logo" align="center">
-        <app-logo></app-logo>
-      </div>
-      <div class="registration-form-box">
-        <mat-card-title color="primary">
-          <div class="mat-title">Registration Form</div>
-        </mat-card-title>
-      </div>
-      <form
-        [formGroup]="registrationForm"
-        (ngSubmit)="registrationForm.valid && onSubmit()"
-      >
-        <div class="registration-container">
-          <div class="name" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="first-name">
-              <mat-card-content>
-                <ngx-spinner
-                  *ngIf="showSpinner"
-                  bdColor="rgba(51,51,51,0.8)"
-                  size="medium"
-                  color="#fff"
-                  type="ball-scale-multiple"
-                >
-                  <p style="font-size: 20px; color: white">Loading...</p>
-                </ngx-spinner>
-                <mat-form-field appearance="outline">
-                  <mat-label>Firstname</mat-label>
-                  <input
-                    matInput
-                    placeholder="Enter Firstname"
-                    formControlName="firstName"
-                    [(ngModel)]="user.firstName"
-                  />
 
-                  <mat-error
-                    *ngIf="
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="main-div-box">
+    <div class="logo" align="center">
+      <app-logo></app-logo>
+    </div>
+    <div class="registration-form-box">
+      <mat-card-title color="primary">
+        <div class="mat-title">Registration Form</div>
+      </mat-card-title>
+    </div>
+    <form [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit()">
+      <div class="registration-container">
+        <div class="name" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="first-name">
+            <mat-card-content>
+              <ngx-spinner *ngIf="showSpinner" bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff"
+                type="ball-scale-multiple">
+                <p style="font-size: 20px; color: white">Loading...</p>
+              </ngx-spinner>
+              <mat-form-field appearance="outline">
+                <mat-label>Firstname</mat-label>
+                <input matInput placeholder="Enter Firstname" formControlName="firstName"
+                  [(ngModel)]="user.firstName" />
+                <mat-error *ngIf="
                       registrationForm.get('firstName').hasError('required')
-                    "
-                    >First name required</mat-error
-                  >
-                  <mat-error
-                    *ngIf="
+                    ">First name required</mat-error>
+                <mat-error *ngIf="
                       registrationForm.get('firstName').hasError('pattern')
-                    "
-                  >
-                    Numbers not allowed</mat-error
-                  >
-                </mat-form-field>
-              </mat-card-content>
-            </div>
-            <div class="last-name">
-              <mat-card-content>
-                <mat-form-field appearance="outline">
-                  <mat-label>Lastname</mat-label>
-                  <input
-                    matInput
-                    placeholder="Enter Lastname"
-                    formControlName="lastName"
-                    [(ngModel)]="user.lastName"
-                  />
-                  <mat-error
-                    *ngIf="
+                    ">
+                  Numbers not allowed</mat-error>
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          <div class="last-name">
+            <mat-card-content>
+              <mat-form-field appearance="outline">
+                <mat-label>Lastname</mat-label>
+                <input matInput placeholder="Enter Lastname" formControlName="lastName" [(ngModel)]="user.lastName" />
+                <mat-error *ngIf="
                       registrationForm.get('lastName').hasError('required')
-                    "
-                    >Last name required</mat-error
-                  >
-                  <mat-error
-                    *ngIf="registrationForm.get('lastName').hasError('pattern')"
-                  >
-                    Numbers not allowed</mat-error
-                  >
-                </mat-form-field>
-              </mat-card-content>
-            </div>
-          </div>
-          <div class="email">
-            <mat-card-content>
-              <mat-form-field appearance="outline" style="width: 100%;">
-                <mat-label>Email</mat-label>
-                <input
-                  matInput
-                  placeholder="Enter Email"
-                  formControlName="emailId"
-                  [(ngModel)]="user.emailId"
-                />
-                <mat-icon matSuffix>mail</mat-icon>
-                <mat-error
-                  *ngIf="registrationForm.get('emailId').hasError('required')"
-                  >Email required</mat-error
-                >
-                <mat-error
-                  *ngIf="registrationForm.get('emailId').hasError('email')"
-                  >Enter valid email ex:abc@gmail.com</mat-error
-                >
+                    ">Last name required</mat-error>
+                <mat-error *ngIf="registrationForm.get('lastName').hasError('pattern')">
+                  Numbers not allowed</mat-error>
               </mat-form-field>
             </mat-card-content>
           </div>
-          <div class="phone-number">
-            <mat-card-content>
-              <mat-form-field appearance="outline" style="width: 100%;">
-                <mat-label>Phone number</mat-label>
-                <input
-                  matInput
-                  placeholder="Enter Phone number"
-                  formControlName="mobileNumber"
-                  [(ngModel)]="user.mobileNumber"
-                />
-                <mat-icon matSuffix>phone</mat-icon>
-                <mat-error
-                  *ngIf="
+        </div>
+
+
+        <div class="address">
+          <mat-card-content>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Enter Address" formControlName="address" [(ngModel)]="user.address" />
+              <mat-icon matSuffix>home</mat-icon>
+              <mat-error *ngIf="registrationForm.get('address').hasError('required')">Address required</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
+
+
+        <div class="email">
+          <mat-card-content>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Enter Email" formControlName="emailId" [(ngModel)]="user.emailId" />
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-error *ngIf="registrationForm.get('emailId').hasError('required')">Email required</mat-error>
+              <mat-error *ngIf="registrationForm.get('emailId').hasError('email')">Enter valid email ex:abc@gmail.com
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
+        <div class="phone-number">
+          <mat-card-content>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Phone number</mat-label>
+              <input matInput placeholder="Enter Phone number" formControlName="mobileNumber"
+                [(ngModel)]="user.mobileNumber" />
+              <mat-icon matSuffix>phone</mat-icon>
+              <mat-error *ngIf="
                     registrationForm.get('mobileNumber').hasError('required')
-                  "
-                  >Phone number is mandatory</mat-error
-                >
-                <mat-error
-                  *ngIf="
+                  ">Phone number is mandatory</mat-error>
+              <mat-error *ngIf="
                     registrationForm.get('mobileNumber').hasError('pattern')
-                  "
-                  >Phone number must be 10 digits</mat-error
-                >
-              </mat-form-field>
-            </mat-card-content>
-          </div>
-          <div
-            class="password-and-cnfpassword"
-            fxLayout="row"
-            fxLayoutAlign="space-between center"
-          >
-            <div>
-              <mat-card-content>
-                <mat-form-field appearance="outline">
-                  <mat-label>Password</mat-label>
-                  <input
-                    matInput
-                    [type]="hide ? 'password' : 'text'"
-                    formControlName="password"
-                    [(ngModel)]="user.password"
-                  />
-                  <mat-error>
-                    <mat-error
-                      *ngIf="
+                  ">Phone number must be 10 digits</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </div>
+        <div class="password-and-cnfpassword" fxLayout="row" fxLayoutAlign="space-between center">
+          <div>
+            <mat-card-content>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+                  [(ngModel)]="user.password" />
+                <mat-error>
+                  <mat-error *ngIf="
                         registrationForm.get('password').hasError('required')
-                      "
-                      >please provide a strong password</mat-error
-                    >
-                    <mat-error
-                      *ngIf="
+                      ">please provide a strong password</mat-error>
+                  <mat-error *ngIf="
                         registrationForm.controls['password'].hasError(
                           'minlength'
                         )
-                      "
-                      >password should be greater than 3 character
-                    </mat-error>
-                    <mat-error
-                      *ngIf="
+                      ">password should be greater than 3 character
+                  </mat-error>
+                  <mat-error *ngIf="
                         registrationForm.controls['password'].hasError(
                           'maxlength'
                         )
-                      "
-                    >
-                      password should not exceed 10 character
-                    </mat-error>
+                      ">
+                    password should not exceed 10 character
                   </mat-error>
-                </mat-form-field>
-              </mat-card-content>
-            </div>
-            &nbsp;
-            <div>
-              <mat-card-content>
-                <mat-form-field appearance="outline">
-                  <mat-label>Confirm</mat-label>
-                  <input
-                    matInput
-                    [type]="hide ? 'password' : 'text'"
-                    formControlName="confirmPassword"
-                  />
-                  <mat-error
-                    *ngIf="
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+          </div>
+          &nbsp;
+          <div>
+            <mat-card-content>
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword" />
+                <mat-error *ngIf="
                       userInfo.confirmPassword.touched &&
                       userInfo.confirmPassword.errors
-                    "
-                    class="invalid-feedback"
-                  >
-                    <mat-error *ngIf="userInfo.confirmPassword.errors.required">
-                      Please Re-Enter password</mat-error
-                    >
-                    <mat-error
-                      *ngIf="
+                    " class="invalid-feedback">
+                  <mat-error *ngIf="userInfo.confirmPassword.errors.required">
+                    Please Re-Enter password</mat-error>
+                  <mat-error *ngIf="
                         !userInfo.confirmPassword.errors.required &&
                         userInfo.confirmPassword.errors
-                      "
-                    >
-                      Password Must be same</mat-error
-                    >
-                  </mat-error>
-                </mat-form-field>
-              </mat-card-content>
-            </div>
-
-            <mat-icon matSuffix (click)="hide = !hide">
-              {{ hide ? "visibility_off" : "visibility" }}
-            </mat-icon>
-          </div>
-          <div class="password-hint">
-            <small>Password should be 4-10 characters</small>
+                      ">
+                    Password Must be same</mat-error>
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
           </div>
 
-          <div
-            class="submit-login-link"
-            fxLayout="row"
-            fxLayoutAlign="space-between center"
-          >
-            <div class="register-btn">
-              <mat-card-actions>
-                <button
-                  mat-raised-button
-                  color="primary"
-                  type="submit"
-                  [disabled]="!registrationForm.valid"
-                >
-                  Register
-                </button>
-              </mat-card-actions>
-            </div>
-            <br />
-            <div style="padding-right: 8%;">
-              <a [routerLink]="['/login']">Sign in instead</a>
-            </div>
+          <mat-icon matSuffix (click)="hide = !hide">
+            {{ hide ? "visibility_off" : "visibility" }}
+          </mat-icon>
+        </div>
+        <div class="password-hint">
+          <small>Password should be 4-10 characters</small>
+        </div>
+
+        <div class="submit-login-link" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="register-btn">
+            <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!registrationForm.valid">
+                Register
+              </button>
+            </mat-card-actions>
+          </div>
+          <br />
+          <div style="padding-right: 8%;">
+            <a [routerLink]="['/login']">Sign in instead</a>
           </div>
         </div>
-      </form>
-    </div>
-  </body>
+      </div>
+    </form>
+  </div>
+</body>
+
 </html>
