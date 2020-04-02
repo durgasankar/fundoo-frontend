@@ -23,6 +23,9 @@ export class LabelService {
   private renameLabelUrl: string = `${environment.LABEL_API_URL +
     environment.RENAME_LABEL_URL}`;
 
+  private mapNoteToLabelUrl: string = `${environment.LABEL_API_URL +
+    environment.MAP_NOTE_TO_LABEL}`;
+
   public get autoRefesh() {
     return this._subject;
   }
@@ -64,14 +67,6 @@ export class LabelService {
 
   public renameLabel(labelId: number, labelName: string) {
     console.log("rename label service reached ");
-    console.log(
-      `${environment.LABEL_API_URL}` +
-        "/" +
-        labelId +
-        `${environment.RENAME_LABEL_URL}` +
-        labelName
-    );
-
     return this._httpservice
       .putMethod(
         `${environment.LABEL_API_URL}` +
@@ -79,6 +74,23 @@ export class LabelService {
           labelId +
           `${environment.RENAME_LABEL_URL}` +
           labelName,
+        {},
+        this._httpservice.httpOptions
+      )
+      .pipe(
+        tap(() => {
+          this._subject.next();
+        })
+      );
+  }
+  public mapNoteToLabel(noteId: number, labelId: any) {
+    console.log("map a note to level service reached ");
+    console.log(
+      this.mapNoteToLabelUrl + "labelId=" + labelId + "&noteId=" + noteId
+    );
+    return this._httpservice
+      .putMethod(
+        this.mapNoteToLabelUrl + "labelId=" + labelId + "&noteId=" + noteId,
         {},
         this._httpservice.httpOptions
       )
