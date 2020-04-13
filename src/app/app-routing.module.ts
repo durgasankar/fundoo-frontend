@@ -1,3 +1,4 @@
+import { AuthGuardService } from "./services/auth-guard.service";
 import { DisplayBoxComponent } from "./containers/dashboard/display-box/display-box.component";
 import { TrashedNotesComponent } from "./containers/dashboard/trashed-notes/trashed-notes.component";
 import { ArchievedNotesComponent } from "./containers/dashboard/archieved-notes/archieved-notes.component";
@@ -23,11 +24,32 @@ const routes: Routes = [
     path: "dashboard",
     component: DashboardComponent,
     children: [
-      { path: "", redirectTo: "/dashboard/notes", pathMatch: "full" },
-      { path: "notes", component: DisplayBoxComponent },
-      { path: "remainders", component: RemainderNotesComponent },
-      { path: "archieve", component: ArchievedNotesComponent },
-      { path: "trash", component: TrashedNotesComponent }
+      {
+        path: "",
+        redirectTo: "/dashboard/notes",
+        pathMatch: "full",
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: "notes",
+        component: DisplayBoxComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: "remainders",
+        component: RemainderNotesComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: "archieve",
+        component: ArchievedNotesComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: "trash",
+        component: TrashedNotesComponent,
+        canActivate: [AuthGuardService]
+      }
     ]
   },
   { path: "**", component: PageNotFoundComponent }

@@ -1,39 +1,21 @@
 <mat-card-footer fxLayout="row" fxLayoutAlign="space-between end">
   <!-- remainder -->
-  <button
-    mat-icon-button
-    matTooltip="Remind me"
-    (click)="openTimePicker(note.noteId)"
-    type="time"
-  >
+  <button mat-icon-button matTooltip="Remind me" (click)="openTimePicker(note.noteId)" type="time">
     <mat-icon>add_alert</mat-icon>
   </button>
   <button mat-icon-button>
     <mat-icon matTooltip="Collaborator">person_add</mat-icon>
   </button>
   <!-- changing color -->
-  <button
-    mat-icon-button
-    matTooltip="Change color"
-    [matMenuTriggerFor]="colorlist"
-  >
+  <button mat-icon-button matTooltip="Change color" [matMenuTriggerFor]="colorlist">
     <mat-icon>palette</mat-icon>
   </button>
   <mat-menu #colorlist="matMenu" [overlapTrigger]="false">
     <ng-template matMenuContent>
-      <div
-        fxLayout="row"
-        fxLayoutGap="10px"
-        style="margin-top: 1px"
-        *ngFor="let colorsRow of colorsList"
-      >
+      <div fxLayout="row" fxLayoutGap="10px" style="margin-top: 1px" *ngFor="let colorsRow of colorsList">
         <div *ngFor="let color of colorsRow">
-          <button
-            [ngStyle]="{ 'background-color': color.colorCode }"
-            (click)="changeColor(color)"
-            matTooltip="{{ color.name }}"
-            mat-mini-fab
-          ></button>
+          <button [ngStyle]="{ 'background-color': color.colorCode }" (click)="changeColor(color)"
+            matTooltip="{{ color.name }}" mat-mini-fab></button>
         </div>
       </div>
     </ng-template>

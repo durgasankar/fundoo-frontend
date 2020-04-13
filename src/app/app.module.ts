@@ -1,3 +1,4 @@
+import { AuthGuardService } from "./services/auth-guard.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
@@ -133,7 +134,7 @@ const MaterialModule = [
   ],
   // any type of dialogue box opening for mat label
   entryComponents: [UpdateNoteComponent, EditLabelComponent, AddLabelComponent],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
